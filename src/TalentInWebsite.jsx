@@ -261,7 +261,7 @@ export const TalentInWebsite = () => {
               <div className="w-full h-96 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center">
                 <div className="text-center">
                   <img
-                    src="/src/assets/GCC-img.png"
+                    src="/public/GCC-img.png"
                     alt="Logo"
                     className="w-24 h-24 rounded-full object-cover mx-auto mb-4"
                   />
@@ -677,7 +677,7 @@ export const TalentInWebsite = () => {
             <div>
               <div className="flex-shrink-0 ">
                 <img
-                  src="/src/assets/website-logos.png"
+                  src="/public/website-logos.png"
                   alt="Talent-In Logo"
                   className="w-18 h-18 rounded-full object-cover"
                 />
