@@ -19,7 +19,7 @@ import {
   Languages,
 } from "lucide-react";
 
-// Translation data
+// Translations
 const translations = {
   en: {
     navigation: {
@@ -171,6 +171,9 @@ const translations = {
       quickLinks: "Quick Links",
       services: "Our Services",
       copyright: "© 2025 Talent-In. All rights reserved. | Muscat, Oman",
+      developedBy: "Developed by",
+      link: "https://sysassist.co/",
+      address: "SysAssist IT Solutions, Indore, India",
       servicesList: [
         "Executive Search",
         "Leadership Coaching",
@@ -330,6 +333,9 @@ const translations = {
       quickLinks: "روابط سريعة",
       services: "خدماتنا",
       copyright: "© 2025 تالنت-إن. جميع الحقوق محفوظة. | مسقط، عُمان",
+      developedBy: "تم تطويره بواسطة",
+      link: "https://sysassist.co/",
+      address: "سيستم أسيست لتقنية المعلومات، إندور، الهند",
       servicesList: [
         "البحث التنفيذي",
         "التدريب القيادي",
@@ -344,7 +350,7 @@ const translations = {
 };
 
 // Image Slider Component
-const ImageSliderSection = ({ language }) => {
+const ImageSlider = ({ language }) => {
   const images = [
     "/GCC-img.png",
     "/GCC-img-1.png",
@@ -361,23 +367,696 @@ const ImageSliderSection = ({ language }) => {
     return () => clearInterval(interval);
   }, []);
 
+  const t = translations[language];
+
   return (
     <div className="relative">
       <div
         className="w-full h-96 rounded-2xl flex items-center justify-center bg-cover bg-center transition-all duration-1000"
         style={{ backgroundImage: `url('${images[currentIndex]}')` }}
-      ></div>
-      <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full opacity-20 animate-pulse"></div>
-      <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full opacity-20 animate-pulse"></div>
-      <div className="text-center drop-shadow-lg">
+      />
+      <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full opacity-20 animate-pulse" />
+      <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full opacity-20 animate-pulse" />
+      <div className="text-center drop-shadow-lg mt-4">
         <p className="text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-          {translations[language].imageSlider.empowering}
+          {t.imageSlider.empowering}
         </p>
       </div>
     </div>
   );
 };
 
+// Navigation Component
+const Navigation = ({
+  language,
+  isMenuOpen,
+  activeSection,
+  onToggleLanguage,
+  onToggleMenu,
+  onScrollToSection,
+}) => {
+  const t = translations[language];
+  const isRTL = language === "ar";
+
+  const navigationItems = [
+    { label: t.navigation.home, id: "home" },
+    { label: t.navigation.about, id: "about" },
+    { label: t.navigation.services, id: "services" },
+    { label: t.navigation.methodology, id: "methodology" },
+    { label: t.navigation.whyUs, id: "why-us" },
+    { label: t.navigation.contact, id: "contact" },
+  ];
+
+  return (
+    <nav className="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-18">
+          {/* Logo */}
+          <div className="flex items-center">
+            <img
+              src="/Talentin_Logo.jpg"
+              alt="Talent-In Logo"
+              className="h-10 rounded-lg object-cover"
+            />
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <div
+              className={`ml-10 flex items-baseline space-x-4 ${
+                isRTL ? "space-x-reverse" : ""
+              }`}
+            >
+              {navigationItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => onScrollToSection(item.id)}
+                  className={`px-3 py-2 text-sm font-medium transition-colors duration-200 cursor-pointer ${
+                    activeSection === item.id
+                      ? "text-blue-600 border-b-2 border-blue-600"
+                      : "text-gray-700 hover:text-blue-600"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Language Toggle & Mobile Menu */}
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={onToggleLanguage}
+              className="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200"
+            >
+              <Languages className="w-4 h-4" />
+              <span>{language === "en" ? "العربية" : "English"}</span>
+            </button>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={onToggleMenu}
+                className="text-gray-700 hover:text-blue-600"
+              >
+                {isMenuOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white border-t">
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            {navigationItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => onScrollToSection(item.id)}
+                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200"
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+// Hero Section Component
+const HeroSection = ({ language, onScrollToSection }) => {
+  const t = translations[language];
+
+  return (
+    <section
+      id="home"
+      className="pt-16 min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-purple-50"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="animate-fade-in-up">
+            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              {t.hero.unlock}
+              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                {" "}
+                {t.hero.potential}
+              </span>
+              <br />
+              {t.hero.build}
+              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                {" "}
+                {t.hero.success}
+              </span>
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              {t.hero.description}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={() => onScrollToSection("contact")}
+                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              >
+                {t.hero.getStarted}
+              </button>
+              <button
+                onClick={() => onScrollToSection("services")}
+                className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300"
+              >
+                {t.hero.ourServices}
+              </button>
+            </div>
+          </div>
+          <ImageSlider language={language} />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// About Section Component
+const AboutSection = ({ language }) => {
+  const t = translations[language];
+
+  const values = [
+    {
+      icon: Target,
+      title: t.about.values.precision,
+      gradient: "from-blue-500 to-cyan-500",
+    },
+    {
+      icon: Award,
+      title: t.about.values.excellence,
+      gradient: "from-purple-500 to-pink-500",
+    },
+    {
+      icon: Shield,
+      title: t.about.values.trust,
+      gradient: "from-green-500 to-teal-500",
+    },
+    {
+      icon: Brain,
+      title: t.about.values.innovation,
+      gradient: "from-orange-500 to-red-500",
+    },
+  ];
+
+  return (
+    <section id="about" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            {t.about.title}
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto" />
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              {t.about.subtitle}
+            </h3>
+            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              {t.about.description1}
+            </p>
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              {t.about.description2}
+            </p>
+            <div className="flex items-center space-x-4">
+              <CheckCircle className="w-6 h-6 text-green-500" />
+              <span className="text-gray-700">{t.about.trustedBy}</span>
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8">
+              <div className="grid grid-cols-2 gap-6">
+                {values.map((value, index) => {
+                  const IconComponent = value.icon;
+                  return (
+                    <div key={index} className="text-center">
+                      <div
+                        className={`w-16 h-16 bg-gradient-to-br ${value.gradient} rounded-lg flex items-center justify-center mx-auto mb-3`}
+                      >
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </div>
+                      <h4 className="font-semibold text-gray-900">
+                        {value.title}
+                      </h4>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Services Section Component
+const ServicesSection = ({ language }) => {
+  const t = translations[language];
+
+  const services = [
+    { icon: Search, gradient: "from-blue-500 to-cyan-500" },
+    { icon: TrendingUp, gradient: "from-purple-500 to-pink-500" },
+    { icon: Shield, gradient: "from-green-500 to-teal-500" },
+    { icon: Brain, gradient: "from-orange-500 to-red-500" },
+  ];
+
+  return (
+    <section id="services" className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            {t.services.title}
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            {t.services.subtitle}
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mt-6" />
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {t.services.items.map((service, index) => {
+            const IconComponent = services[index].icon;
+            return (
+              <div
+                key={index}
+                className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300"
+              >
+                <div
+                  className={`w-16 h-16 bg-gradient-to-br ${services[index].gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                >
+                  <IconComponent className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Methodology Section Component
+const MethodologySection = ({ language }) => {
+  const t = translations[language];
+  const isRTL = language === "ar";
+
+  return (
+    <section id="methodology" className="py-20 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            {t.methodology.title}
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            {t.methodology.subtitle}
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mt-6" />
+        </div>
+
+        <div className="space-y-8">
+          {t.methodology.steps.map((step, index) => (
+            <div
+              key={index}
+              className={`flex items-start group ${
+                isRTL ? "space-x-reverse" : ""
+              } space-x-6`}
+            >
+              <div className="flex-shrink-0">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+              </div>
+              <div className="flex-1 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 group-hover:shadow-lg transition-shadow duration-300">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Why Us Section Component
+const WhyUsSection = ({ language }) => {
+  const t = translations[language];
+  const isRTL = language === "ar";
+
+  return (
+    <section
+      id="why-us"
+      className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4">{t.whyUs.title}</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-pink-400 mx-auto" />
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h3 className="text-2xl font-bold mb-6">{t.whyUs.subtitle}</h3>
+            <p className="text-lg mb-6 leading-relaxed opacity-90">
+              {t.whyUs.description1}
+            </p>
+            <p className="text-lg mb-8 leading-relaxed opacity-90">
+              {t.whyUs.description2}
+            </p>
+            <div className="space-y-4">
+              {t.whyUs.features.map((item, index) => (
+                <div
+                  key={index}
+                  className={`flex items-center ${
+                    isRTL ? "space-x-reverse" : ""
+                  } space-x-3`}
+                >
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <div className="text-center mb-8">
+                <Award className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
+                <h4 className="text-xl font-bold">{t.whyUs.excellence}</h4>
+              </div>
+              <div className="grid grid-cols-2 gap-6 text-center">
+                <div>
+                  <div className="text-3xl font-bold text-cyan-400 mb-2">
+                    100%
+                  </div>
+                  <div className="text-sm opacity-80">
+                    {t.whyUs.stats.satisfaction}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-pink-400 mb-2">
+                    GCC
+                  </div>
+                  <div className="text-sm opacity-80">
+                    {t.whyUs.stats.market}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-green-400 mb-2">
+                    24/7
+                  </div>
+                  <div className="text-sm opacity-80">
+                    {t.whyUs.stats.support}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-yellow-400 mb-2">
+                    AI
+                  </div>
+                  <div className="text-sm opacity-80">
+                    {t.whyUs.stats.powered}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Contact Section Component
+const ContactSection = ({
+  language,
+  formData,
+  onFormChange,
+  onFormSubmit,
+  onScrollToSection,
+}) => {
+  const t = translations[language];
+  const isRTL = language === "ar";
+
+  return (
+    <section id="contact" className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            {t.contact.title}
+          </h2>
+          <p className="text-xl text-gray-600">{t.contact.subtitle}</p>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mt-6" />
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Contact Form */}
+          <div className="bg-white rounded-2xl p-8 shadow-lg">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">
+              {t.contact.form.title}
+            </h3>
+            <form onSubmit={onFormSubmit} className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {t.contact.form.name} *
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) =>
+                    onFormChange({ ...formData, name: e.target.value })
+                  }
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                  placeholder={t.contact.form.namePlaceholder}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {t.contact.form.email} *
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) =>
+                    onFormChange({ ...formData, email: e.target.value })
+                  }
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                  placeholder={t.contact.form.emailPlaceholder}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {t.contact.form.company}
+                </label>
+                <input
+                  type="text"
+                  value={formData.company}
+                  onChange={(e) =>
+                    onFormChange({ ...formData, company: e.target.value })
+                  }
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                  placeholder={t.contact.form.companyPlaceholder}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  {t.contact.form.message} *
+                </label>
+                <textarea
+                  required
+                  rows={4}
+                  value={formData.message}
+                  onChange={(e) =>
+                    onFormChange({ ...formData, message: e.target.value })
+                  }
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                  placeholder={t.contact.form.messagePlaceholder}
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              >
+                {t.contact.form.sendMessage}
+              </button>
+            </form>
+          </div>
+
+          {/* Contact Information */}
+          <div className="space-y-8">
+            <div className="bg-white rounded-2xl p-8 shadow-lg">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                {t.contact.info.title}
+              </h3>
+              <div className="space-y-6">
+                {[
+                  {
+                    icon: Phone,
+                    label: t.contact.info.phone,
+                    value: "+968 97511711",
+                    gradient: "from-blue-500 to-cyan-500",
+                  },
+                  {
+                    icon: Mail,
+                    label: t.contact.info.email,
+                    value: "muaath@talent-in.com",
+                    gradient: "from-purple-500 to-pink-500",
+                  },
+                  {
+                    icon: MapPin,
+                    label: t.contact.info.address,
+                    value: t.contact.info.addressValue,
+                    gradient: "from-green-500 to-teal-500",
+                  },
+                  {
+                    icon: Globe,
+                    label: t.contact.info.website,
+                    value: t.contact.info.websiteValue,
+                    gradient: "from-orange-500 to-red-500",
+                  },
+                ].map((item, index) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <div
+                      key={index}
+                      className={`flex items-center ${
+                        isRTL ? "space-x-reverse" : ""
+                      } space-x-4`}
+                    >
+                      <div
+                        className={`w-12 h-12 bg-gradient-to-br ${item.gradient} rounded-lg flex items-center justify-center`}
+                      >
+                        <IconComponent className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900">
+                          {item.label}
+                        </p>
+                        <p className="text-gray-600">{item.value}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+              <h3 className="text-xl font-bold mb-4">{t.contact.cta.title}</h3>
+              <p className="mb-6 opacity-90">{t.contact.cta.description}</p>
+              <button
+                onClick={() => onScrollToSection("home")}
+                className={`flex items-center text-white hover:text-cyan-300 transition-colors duration-200 ${
+                  isRTL ? "space-x-reverse" : ""
+                } space-x-2`}
+              >
+                <span>{t.contact.cta.schedule}</span>
+                <ArrowRight
+                  className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`}
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Footer Component
+const FooterSection = ({ language, onScrollToSection }) => {
+  const t = translations[language];
+
+  const quickLinks = [
+    { name: t.navigation.about, id: "about" },
+    { name: t.navigation.services, id: "services" },
+    { name: t.navigation.methodology, id: "methodology" },
+    { name: t.navigation.contact, id: "contact" },
+  ];
+
+  return (
+    <footer className="bg-gray-950 text-white py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-3 gap-8">
+          <div>
+            <img
+              src="/Talentin_Logo.jpg"
+              alt="Talent-In Logo"
+              className="h-10 rounded-lg object-cover mb-4"
+            />
+            <p className="text-gray-400 mb-4">{t.footer.description}</p>
+            <p className="text-gray-400">{t.footer.location}</p>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-semibold mb-4">
+              {t.footer.quickLinks}
+            </h4>
+            <div className="space-y-2">
+              {quickLinks.map((link) => (
+                <button
+                  key={link.name}
+                  onClick={() => onScrollToSection(link.id)}
+                  className="block text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  {link.name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-semibold mb-4">{t.footer.services}</h4>
+            <div className="space-y-2 text-gray-400">
+              {t.footer.servicesList.map((service, index) => (
+                <p key={index}>{service}</p>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-between border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+          <p>{t.footer.copyright}</p>
+          <p className="mt-2 text-sm">
+            {t.footer.developedBy}{" "}
+            <a
+              href={t.footer.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-blue-100 hover:underline"
+            >
+              {t.footer.address}
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// Main Component
 export const TalentInWebsite = () => {
   const [language, setLanguage] = useState("en");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -389,15 +1068,15 @@ export const TalentInWebsite = () => {
     message: "",
   });
 
-  const t = translations[language];
   const isRTL = language === "ar";
 
+  // Set document direction and language
   useEffect(() => {
-    // Set document direction
     document.dir = isRTL ? "rtl" : "ltr";
     document.documentElement.lang = language;
   }, [language, isRTL]);
 
+  // Handle scroll to update active section
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
@@ -425,8 +1104,13 @@ export const TalentInWebsite = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Handlers
   const toggleLanguage = () => {
     setLanguage(language === "en" ? "ar" : "en");
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const scrollToSection = (sectionId) => {
@@ -439,666 +1123,39 @@ export const TalentInWebsite = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    alert(t.contact.form.successMessage);
+    alert(translations[language].contact.form.successMessage);
     setFormData({ name: "", email: "", company: "", message: "" });
   };
-
-  const services = [
-    {
-      icon: <Search className="w-8 h-8" />,
-      title: t.services.items[0].title,
-      description: t.services.items[0].description,
-      gradient: "from-blue-500 to-cyan-500",
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8" />,
-      title: t.services.items[1].title,
-      description: t.services.items[1].description,
-      gradient: "from-purple-500 to-pink-500",
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: t.services.items[2].title,
-      description: t.services.items[2].description,
-      gradient: "from-green-500 to-teal-500",
-    },
-    {
-      icon: <Brain className="w-8 h-8" />,
-      title: t.services.items[3].title,
-      description: t.services.items[3].description,
-      gradient: "from-orange-500 to-red-500",
-    },
-  ];
-
-  const methodology = t.methodology.steps.map((step, index) => ({
-    step: String(index + 1).padStart(2, "0"),
-    title: step.title,
-    description: step.description,
-  }));
 
   return (
     <div
       className={`min-h-screen bg-white ${isRTL ? "font-arabic" : ""}`}
       dir={isRTL ? "rtl" : "ltr"}
     >
-      {/* Navigation */}
-      <nav className="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-18">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <img
-                  src="/website-logos.png"
-                  alt="Talent-In Logo"
-                  className="w-18 h-18 rounded-full object-cover"
-                />
-              </div>
-            </div>
+      <Navigation
+        language={language}
+        isMenuOpen={isMenuOpen}
+        activeSection={activeSection}
+        onToggleLanguage={toggleLanguage}
+        onToggleMenu={toggleMenu}
+        onScrollToSection={scrollToSection}
+      />
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:block">
-              <div
-                className={`ml-10 flex items-baseline space-x-4 ${
-                  isRTL ? "space-x-reverse" : ""
-                }`}
-              >
-                {[
-                  t.navigation.home,
-                  t.navigation.about,
-                  t.navigation.services,
-                  t.navigation.methodology,
-                  t.navigation.whyUs,
-                  t.navigation.contact,
-                ].map((item, index) => {
-                  const sectionIds = [
-                    "home",
-                    "about",
-                    "services",
-                    "methodology",
-                    "why-us",
-                    "contact",
-                  ];
-                  return (
-                    <button
-                      key={item}
-                      onClick={() => scrollToSection(sectionIds[index])}
-                      className={`px-3 py-2 text-sm font-medium transition-colors duration-200 cursor-pointer  ${
-                        activeSection === sectionIds[index]
-                          ? "text-blue-600 border-b-2 border-blue-600"
-                          : "text-gray-700 hover:text-blue-600"
-                      }`}
-                    >
-                      {item}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Language Toggle & Mobile Menu */}
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={toggleLanguage}
-                className="flex items-center space-x-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200 cursor-pointer"
-              >
-                <Languages className="w-4 h-4" />
-                <span>{language === "en" ? "العربية" : "English"}</span>
-              </button>
-
-              {/* Mobile menu button */}
-              <div className="md:hidden">
-                <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="text-gray-700 hover:text-blue-600"
-                >
-                  {isMenuOpen ? (
-                    <X className="w-6 h-6" />
-                  ) : (
-                    <Menu className="w-6 h-6" />
-                  )}
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {[
-                t.navigation.home,
-                t.navigation.about,
-                t.navigation.services,
-                t.navigation.methodology,
-                t.navigation.whyUs,
-                t.navigation.contact,
-              ].map((item, index) => {
-                const sectionIds = [
-                  "home",
-                  "about",
-                  "services",
-                  "methodology",
-                  "why-us",
-                  "contact",
-                ];
-                return (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(sectionIds[index])}
-                    className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 transition-colors duration-200 cursor-pointer"
-                  >
-                    {item}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </nav>
-
-      {/* Hero Section */}
-      <section
-        id="home"
-        className="pt-16 min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-purple-50"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in-up">
-              <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                {t.hero.unlock}
-                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  {" "}
-                  {t.hero.potential}
-                </span>
-                <br />
-                {t.hero.build}
-                <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                  {" "}
-                  {t.hero.success}
-                </span>
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                {t.hero.description}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={() => scrollToSection("contact")}
-                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-                >
-                  {t.hero.getStarted}
-                </button>
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300 cursor-pointer"
-                >
-                  {t.hero.ourServices}
-                </button>
-              </div>
-            </div>
-            <ImageSliderSection language={language} />
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              {t.about.title}
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto"></div>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                {t.about.subtitle}
-              </h3>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                {t.about.description1}
-              </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                {t.about.description2}
-              </p>
-              <div className="flex items-center space-x-4">
-                <CheckCircle className="w-6 h-6 text-green-500" />
-                <span className="text-gray-700">{t.about.trustedBy}</span>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mx-auto mb-3">
-                      <Target className="w-8 h-8 text-white" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900">
-                      {t.about.values.precision}
-                    </h4>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mx-auto mb-3">
-                      <Award className="w-8 h-8 text-white" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900">
-                      {t.about.values.excellence}
-                    </h4>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center mx-auto mb-3">
-                      <Shield className="w-8 h-8 text-white" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900">
-                      {t.about.values.trust}
-                    </h4>
-                  </div>
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center mx-auto mb-3">
-                      <Brain className="w-8 h-8 text-white" />
-                    </div>
-                    <h4 className="font-semibold text-gray-900">
-                      {t.about.values.innovation}
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              {t.services.title}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {t.services.subtitle}
-            </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mt-6"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300"
-              >
-                <div
-                  className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <div className="text-white">{service.icon}</div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Methodology Section */}
-      <section id="methodology" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              {t.methodology.title}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {t.methodology.subtitle}
-            </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mt-6"></div>
-          </div>
-
-          <div className="space-y-8">
-            {methodology.map((step, index) => (
-              <div
-                key={index}
-                className={`flex items-start group ${
-                  isRTL ? "space-x-reverse" : ""
-                } space-x-6`}
-              >
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300">
-                    {step.step}
-                  </div>
-                </div>
-                <div className="flex-1 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 group-hover:shadow-lg transition-shadow duration-300">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Partner Section */}
-      <section
-        id="why-us"
-        className="py-20 bg-gradient-to-br from-blue-900 to-purple-900 text-white"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">{t.whyUs.title}</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-pink-400 mx-auto"></div>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-2xl font-bold mb-6">{t.whyUs.subtitle}</h3>
-              <p className="text-lg mb-6 leading-relaxed opacity-90">
-                {t.whyUs.description1}
-              </p>
-              <p className="text-lg mb-8 leading-relaxed opacity-90">
-                {t.whyUs.description2}
-              </p>
-              <div className="space-y-4">
-                {t.whyUs.features.map((item, index) => (
-                  <div
-                    key={index}
-                    className={`flex items-center ${
-                      isRTL ? "space-x-reverse" : ""
-                    } space-x-3`}
-                  >
-                    <CheckCircle className="w-5 h-5 text-green-400" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="relative">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                <div className="text-center mb-8">
-                  <Award className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
-                  <h4 className="text-xl font-bold">{t.whyUs.excellence}</h4>
-                </div>
-                <div className="grid grid-cols-2 gap-6 text-center">
-                  <div>
-                    <div className="text-3xl font-bold text-cyan-400 mb-2">
-                      100%
-                    </div>
-                    <div className="text-sm opacity-80">
-                      {t.whyUs.stats.satisfaction}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-pink-400 mb-2">
-                      GCC
-                    </div>
-                    <div className="text-sm opacity-80">
-                      {t.whyUs.stats.market}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-green-400 mb-2">
-                      24/7
-                    </div>
-                    <div className="text-sm opacity-80">
-                      {t.whyUs.stats.support}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-yellow-400 mb-2">
-                      AI
-                    </div>
-                    <div className="text-sm opacity-80">
-                      {t.whyUs.stats.powered}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              {t.contact.title}
-            </h2>
-            <p className="text-xl text-gray-600">{t.contact.subtitle}</p>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mt-6"></div>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                {t.contact.form.title}
-              </h3>
-              <form onSubmit={handleFormSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t.contact.form.name} *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
-                    placeholder={t.contact.form.namePlaceholder}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t.contact.form.email} *
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
-                    placeholder={t.contact.form.emailPlaceholder}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t.contact.form.company}
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.company}
-                    onChange={(e) =>
-                      setFormData({ ...formData, company: e.target.value })
-                    }
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
-                    placeholder={t.contact.form.companyPlaceholder}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t.contact.form.message} *
-                  </label>
-                  <textarea
-                    required
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
-                    }
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
-                    placeholder={t.contact.form.messagePlaceholder}
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-                >
-                  {t.contact.form.sendMessage}
-                </button>
-              </form>
-            </div>
-
-            {/* Contact Information */}
-            <div className="space-y-8">
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                  {t.contact.info.title}
-                </h3>
-                <div className="space-y-6">
-                  <div
-                    className={`flex items-center ${
-                      isRTL ? "space-x-reverse" : ""
-                    } space-x-4`}
-                  >
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900">
-                        {t.contact.info.phone}
-                      </p>
-                      <p className="text-gray-600">+968 97511711</p>
-                    </div>
-                  </div>
-                  <div
-                    className={`flex items-center ${
-                      isRTL ? "space-x-reverse" : ""
-                    } space-x-4`}
-                  >
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                      <Mail className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900">
-                        {t.contact.info.email}
-                      </p>
-                      <p className="text-gray-600">muaath@talent-in.com</p>
-                    </div>
-                  </div>
-                  <div
-                    className={`flex items-center ${
-                      isRTL ? "space-x-reverse" : ""
-                    } space-x-4`}
-                  >
-                    <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 rounded-lg flex items-center justify-center">
-                      <MapPin className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900">
-                        {t.contact.info.address}
-                      </p>
-                      <p className="text-gray-600">
-                        {t.contact.info.addressValue}
-                      </p>
-                    </div>
-                  </div>
-                  <div
-                    className={`flex items-center ${
-                      isRTL ? "space-x-reverse" : ""
-                    } space-x-4`}
-                  >
-                    <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
-                      <Globe className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-900">
-                        {t.contact.info.website}
-                      </p>
-                      <p className="text-gray-600">
-                        {t.contact.info.websiteValue}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
-                <h3 className="text-xl font-bold mb-4">
-                  {t.contact.cta.title}
-                </h3>
-                <p className="mb-6 opacity-90">{t.contact.cta.description}</p>
-                <button
-                  onClick={() => scrollToSection("home")}
-                  className={`flex items-center text-white hover:text-cyan-300 transition-colors duration-200  cursor-pointer ${
-                    isRTL ? "space-x-reverse" : ""
-                  } space-x-2`}
-                >
-                  <span>{t.contact.cta.schedule}</span>
-                  <ArrowRight
-                    className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`}
-                  />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <div className="flex-shrink-0">
-                <img
-                  src="/website-logos.png"
-                  alt="Talent-In Logo"
-                  className="w-18 h-18 rounded-full object-cover"
-                />
-              </div>
-              <p className="text-gray-400 mb-4">{t.footer.description}</p>
-              <p className="text-gray-400">{t.footer.location}</p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">
-                {t.footer.quickLinks}
-              </h4>
-              <div className="space-y-2">
-                {[
-                  { name: t.navigation.about, id: "about" },
-                  { name: t.navigation.services, id: "services" },
-                  { name: t.navigation.methodology, id: "methodology" },
-                  { name: t.navigation.contact, id: "contact" },
-                ].map((link) => (
-                  <button
-                    key={link.name}
-                    onClick={() => scrollToSection(link.id)}
-                    className="block text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer"
-                  >
-                    {link.name}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">
-                {t.footer.services}
-              </h4>
-              <div className="space-y-2 text-gray-400">
-                {t.footer.servicesList.map((service, index) => (
-                  <p key={index}>{service}</p>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>{t.footer.copyright}</p>
-          </div>
-        </div>
-      </footer>
+      <HeroSection language={language} onScrollToSection={scrollToSection} />
+      <AboutSection language={language} />
+      <ServicesSection language={language} />
+      <MethodologySection language={language} />
+      <WhyUsSection language={language} />
+      <ContactSection
+        language={language}
+        formData={formData}
+        onFormChange={setFormData}
+        onFormSubmit={handleFormSubmit}
+        onScrollToSection={scrollToSection}
+      />
+      <FooterSection language={language} onScrollToSection={scrollToSection} />
     </div>
   );
 };
+
+export default TalentInWebsite;
