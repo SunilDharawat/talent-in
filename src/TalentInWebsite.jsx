@@ -482,7 +482,7 @@ export const TalentInWebsite = () => {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <img
-                  src="/src/assets/website-logos.png"
+                  src="/website-logos.png"
                   alt="Talent-In Logo"
                   className="w-18 h-18 rounded-full object-cover"
                 />
