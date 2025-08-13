@@ -345,7 +345,13 @@ const translations = {
 
 // Image Slider Component
 const ImageSliderSection = ({ language }) => {
-  const images = ["/GCC-img.png", "/GCC-img-1.png", "/GCC-img-2.png"];
+  const images = [
+    "/GCC-img.png",
+    "/GCC-img-1.png",
+    "/GCC-img-2.png",
+    "/GCC-img-3.png",
+    "/GCC-img-4.png",
+  ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {

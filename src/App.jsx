@@ -1,4 +1,4 @@
-import { TalentInWebsite } from "./TalentInWebsite";
+import { TalentInWebsite } from "./Components/TalentInWebsite";
 
 function App() {
   return <TalentInWebsite />;
