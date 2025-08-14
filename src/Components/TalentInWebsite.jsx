@@ -468,19 +468,17 @@ const Navigation = ({
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div
-              className={`ml-10 flex items-baseline space-x-4 ${
-                isRTL ? "space-x-reverse" : ""
-              }`}
+              className={`ml-10 flex items-baseline space-x-4 ${isRTL ? "space-x-reverse" : ""
+                }`}
             >
               {navigationItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => onScrollToSection(item.id)}
-                  className={`px-3 py-2 text-sm font-medium transition-colors duration-200 cursor-pointer ${
-                    activeSection === item.id
-                      ? "text-blue-600 border-b-2 border-blue-600"
-                      : "text-gray-700 hover:text-blue-600"
-                  }`}
+                  className={`px-3 py-2 text-sm font-medium transition-colors duration-200 cursor-pointer ${activeSection === item.id
+                    ? "text-blue-600 border-b-2 border-blue-600"
+                    : "text-gray-700 hover:text-blue-600"
+                    }`}
                 >
                   {item.label}
                 </button>
@@ -740,9 +738,8 @@ const MethodologySection = ({ language }) => {
           {t.methodology.steps.map((step, index) => (
             <div
               key={index}
-              className={`flex items-start group ${
-                isRTL ? "space-x-reverse" : ""
-              } space-x-6`}
+              className={`flex items-start group ${isRTL ? "space-x-reverse" : ""
+                } space-x-6`}
             >
               <div className="flex-shrink-0">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300">
@@ -794,9 +791,8 @@ const WhyUsSection = ({ language }) => {
               {t.whyUs.features.map((item, index) => (
                 <div
                   key={index}
-                  className={`flex items-center ${
-                    isRTL ? "space-x-reverse" : ""
-                  } space-x-3`}
+                  className={`flex items-center ${isRTL ? "space-x-reverse" : ""
+                    } space-x-3`}
                 >
                   <CheckCircle className="w-5 h-5 text-green-400" />
                   <span>{item}</span>
@@ -854,6 +850,270 @@ const WhyUsSection = ({ language }) => {
 };
 
 // Contact Section Component
+// const ContactSection = ({
+//   language,
+//   formData,
+//   onFormChange,
+//   onFormSubmit,
+//   onScrollToSection,
+// }) => {
+//   const t = translations[language];
+//   const isRTL = language === "ar";
+
+//   return (
+//     <section id="contact" className="py-20 bg-gray-50">
+//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//         <div className="text-center mb-16">
+//           <h2 className="text-4xl font-bold text-gray-900 mb-4">
+//             {t.contact.title}
+//           </h2>
+//           <p className="text-xl text-gray-600">{t.contact.subtitle}</p>
+//           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mt-6" />
+//         </div>
+
+//         <div className="grid lg:grid-cols-2 gap-12">
+//           {/* Contact Form */}
+//           <div className="bg-white rounded-2xl p-8 shadow-lg">
+//             <h3 className="text-2xl font-bold text-gray-900 mb-6">
+//               {t.contact.form.title}
+//             </h3>
+//             <form onSubmit={onFormSubmit} className="space-y-6">
+//               <div>
+//                 <label className="block text-sm font-medium text-gray-700 mb-2">
+//                   {t.contact.form.name} *
+//                 </label>
+//                 <input
+//                   type="text"
+//                   required
+//                   value={formData.name}
+//                   onChange={(e) =>
+//                     onFormChange({ ...formData, name: e.target.value })
+//                   }
+//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+//                   placeholder={t.contact.form.namePlaceholder}
+//                 />
+//               </div>
+//               <div>
+//                 <label className="block text-sm font-medium text-gray-700 mb-2">
+//                   {t.contact.form.email} *
+//                 </label>
+//                 <input
+//                   type="email"
+//                   required
+//                   value={formData.email}
+//                   onChange={(e) =>
+//                     onFormChange({ ...formData, email: e.target.value })
+//                   }
+//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+//                   placeholder={t.contact.form.emailPlaceholder}
+//                 />
+//               </div>
+//               <div>
+//                 <label className="block text-sm font-medium text-gray-700 mb-2">
+//                   {t.contact.form.company}
+//                 </label>
+//                 <input
+//                   type="text"
+//                   value={formData.company}
+//                   onChange={(e) =>
+//                     onFormChange({ ...formData, company: e.target.value })
+//                   }
+//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+//                   placeholder={t.contact.form.companyPlaceholder}
+//                 />
+//               </div>
+//               <div>
+//                 <label className="block text-sm font-medium text-gray-700 mb-2">
+//                   {t.contact.form.message} *
+//                 </label>
+//                 <textarea
+//                   required
+//                   rows={4}
+//                   value={formData.message}
+//                   onChange={(e) =>
+//                     onFormChange({ ...formData, message: e.target.value })
+//                   }
+//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+//                   placeholder={t.contact.form.messagePlaceholder}
+//                 />
+//               </div>
+//               <button
+//                 type="submit"
+//                 className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+//               >
+//                 {t.contact.form.sendMessage}
+//               </button>
+//             </form>
+//             {/* Interactive Map */}
+//             <div className="bg-white rounded-2xl p-8 shadow-lg">
+//               <h3 className="text-2xl font-bold text-gray-900 mb-6">
+//                 {t.contact.map.title}
+//               </h3>
+//               <div className="relative h-64 rounded-xl overflow-hidden">
+//                 <iframe
+//                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.3926636536755!2d58.47841731498063!3d23.595857884681675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e91f7e1c5c5c5c5%3A0x5f5f5f5f5f5f5f5f!2sShatti%20Al%20Qurum%2C%20Muscat%2C%20Oman!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s"
+//                   width="100%"
+//                   height="100%"
+//                   style={{ border: 0 }}
+//                   allowFullScreen=""
+//                   loading="lazy"
+//                   referrerPolicy="no-referrer-when-downgrade"
+//                   className="rounded-xl"
+//                   title="Talent-In Location"
+//                 ></iframe>
+//                 <div className="absolute top-4 right-4 bg-white rounded-lg p-2 shadow-lg">
+//                   <MapPin className="w-5 h-5 text-blue-600" />
+//                 </div>
+//               </div>
+//               <div className="mt-4 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
+//                 <p className="text-sm text-gray-600 mb-2">
+//                   <span className="font-semibold text-gray-900">
+//                     {t.contact.info.address}:
+//                   </span>{" "}
+//                   {t.contact.info.addressValue}
+//                 </p>
+//                 <p className="text-xs text-gray-500">
+//                   Click on the map to get directions
+//                 </p>
+//               </div>
+//             </div>
+//           </div>
+
+//           {/* Contact Information */}
+//           <div className="space-y-8">
+//             <div className="bg-white rounded-2xl p-8 shadow-lg">
+//               <h3 className="text-2xl font-bold text-gray-900 mb-6">
+//                 {t.contact.info.title}
+//               </h3>
+//               <div className="space-y-6">
+//                 {[
+//                   {
+//                     icon: Phone,
+//                     label: t.contact.info.phone,
+//                     value: "+968 97511711",
+//                     gradient: "from-blue-500 to-cyan-500",
+//                   },
+//                   {
+//                     icon: Mail,
+//                     label: t.contact.info.email,
+//                     value: "muaath@talent-in.com",
+//                     gradient: "from-purple-500 to-pink-500",
+//                   },
+//                   {
+//                     icon: MapPin,
+//                     label: t.contact.info.address,
+//                     value: t.contact.info.addressValue,
+//                     gradient: "from-green-500 to-teal-500",
+//                   },
+//                   {
+//                     icon: Globe,
+//                     label: t.contact.info.website,
+//                     value: t.contact.info.websiteValue,
+//                     gradient: "from-orange-500 to-red-500",
+//                   },
+//                 ].map((item, index) => {
+//                   const IconComponent = item.icon;
+//                   return (
+//                     <div
+//                       key={index}
+//                       className={`flex items-center ${
+//                         isRTL ? "space-x-reverse" : ""
+//                       } space-x-4`}
+//                     >
+//                       <div
+//                         className={`w-12 h-12 bg-gradient-to-br ${item.gradient} rounded-lg flex items-center justify-center`}
+//                       >
+//                         <IconComponent className="w-6 h-6 text-white" />
+//                       </div>
+//                       <div>
+//                         <p className="font-semibold text-gray-900">
+//                           {item.label}
+//                         </p>
+//                         <p className="text-gray-600">{item.value}</p>
+//                       </div>
+//                     </div>
+//                   );
+//                 })}
+//               </div>
+//             </div>
+
+//             {/* Social Media Links */}
+//             <div className="bg-white rounded-2xl p-8 shadow-lg">
+//               <h3 className="text-2xl font-bold text-gray-900 mb-6">
+//                 {t.contact.socialMedia.title}
+//               </h3>
+//               <div className="grid grid-cols-2 gap-4">
+//                 {[
+//                   {
+//                     icon: LinkedInIcon,
+//                     label: t.contact.socialMedia.linkedin,
+//                     url: "https://linkedin.com/",
+//                     gradient: "from-blue-600 to-blue-700",
+//                     hoverColor: "hover:text-blue-600",
+//                   },
+//                   {
+//                     icon: WhatsAppIcon,
+//                     label: t.contact.socialMedia.whatsapp,
+//                     url: "https://wa.me/96897511711",
+//                     gradient: "from-green-500 to-green-600",
+//                     hoverColor: "hover:text-green-600",
+//                   },
+//                   {
+//                     icon: InstagramIcon,
+//                     label: t.contact.socialMedia.instagram,
+//                     url: "https://instagram.com/",
+//                     gradient: "from-pink-500 to-purple-600",
+//                     hoverColor: "hover:text-pink-600",
+//                   },
+//                   {
+//                     icon: FacebookIcon,
+//                     label: t.contact.socialMedia.facebook,
+//                     url: "https://facebook.com/",
+//                     gradient: "from-blue-500 to-blue-600",
+//                     hoverColor: "hover:text-blue-500",
+//                   },
+//                 ].map((social, index) => {
+//                   const IconComponent = social.icon;
+//                   return (
+//                     <a
+//                       key={index}
+//                       href={social.url}
+//                       target="_blank"
+//                       rel="noopener noreferrer"
+//                       className={`group flex items-center p-4 rounded-xl bg-gradient-to-br ${social.gradient} text-white hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300`}
+//                     >
+//                       <div className="flex items-center space-x-3">
+//                         <IconComponent />
+//                         <span className="font-medium">{social.label}</span>
+//                       </div>
+//                     </a>
+//                   );
+//                 })}
+//               </div>
+//             </div>
+
+//             <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
+//               <h3 className="text-xl font-bold mb-4">{t.contact.cta.title}</h3>
+//               <p className="mb-6 opacity-90">{t.contact.cta.description}</p>
+//               <button
+//                 onClick={() => onScrollToSection("home")}
+//                 className={`flex items-center text-white hover:text-cyan-300 transition-colors duration-200 ${
+//                   isRTL ? "space-x-reverse" : ""
+//                 } space-x-2`}
+//               >
+//                 <span>{t.contact.cta.schedule}</span>
+//                 <ArrowRight
+//                   className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`}
+//                 />
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+// Contact Section Component
 const ContactSection = ({
   language,
   formData,
@@ -871,120 +1131,13 @@ const ContactSection = ({
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             {t.contact.title}
           </h2>
-          <p className="text-xl text-gray-600">{t.contact.subtitle}</p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mt-6" />
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">
-              {t.contact.form.title}
-            </h3>
-            <form onSubmit={onFormSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t.contact.form.name} *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) =>
-                    onFormChange({ ...formData, name: e.target.value })
-                  }
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
-                  placeholder={t.contact.form.namePlaceholder}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t.contact.form.email} *
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) =>
-                    onFormChange({ ...formData, email: e.target.value })
-                  }
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
-                  placeholder={t.contact.form.emailPlaceholder}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t.contact.form.company}
-                </label>
-                <input
-                  type="text"
-                  value={formData.company}
-                  onChange={(e) =>
-                    onFormChange({ ...formData, company: e.target.value })
-                  }
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
-                  placeholder={t.contact.form.companyPlaceholder}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {t.contact.form.message} *
-                </label>
-                <textarea
-                  required
-                  rows={4}
-                  value={formData.message}
-                  onChange={(e) =>
-                    onFormChange({ ...formData, message: e.target.value })
-                  }
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
-                  placeholder={t.contact.form.messagePlaceholder}
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-              >
-                {t.contact.form.sendMessage}
-              </button>
-            </form>
-            {/* Interactive Map */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                {t.contact.map.title}
-              </h3>
-              <div className="relative h-64 rounded-xl overflow-hidden">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.3926636536755!2d58.47841731498063!3d23.595857884681675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e91f7e1c5c5c5c5%3A0x5f5f5f5f5f5f5f5f!2sShatti%20Al%20Qurum%2C%20Muscat%2C%20Oman!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="rounded-xl"
-                  title="Talent-In Location"
-                ></iframe>
-                <div className="absolute top-4 right-4 bg-white rounded-lg p-2 shadow-lg">
-                  <MapPin className="w-5 h-5 text-blue-600" />
-                </div>
-              </div>
-              <div className="mt-4 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
-                <p className="text-sm text-gray-600 mb-2">
-                  <span className="font-semibold text-gray-900">
-                    {t.contact.info.address}:
-                  </span>{" "}
-                  {t.contact.info.addressValue}
-                </p>
-                <p className="text-xs text-gray-500">
-                  Click on the map to get directions
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Contact Information */}
+          {/* Left Column */}
           <div className="space-y-8">
+            {/* Contact Information */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 {t.contact.info.title}
@@ -1020,9 +1173,8 @@ const ContactSection = ({
                   return (
                     <div
                       key={index}
-                      className={`flex items-center ${
-                        isRTL ? "space-x-reverse" : ""
-                      } space-x-4`}
+                      className={`flex items-center ${isRTL ? "space-x-reverse" : ""
+                        } space-x-4`}
                     >
                       <div
                         className={`w-12 h-12 bg-gradient-to-br ${item.gradient} rounded-lg flex items-center justify-center`}
@@ -1095,21 +1247,64 @@ const ContactSection = ({
                 })}
               </div>
             </div>
+          </div>
 
-            <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
-              <h3 className="text-xl font-bold mb-4">{t.contact.cta.title}</h3>
-              <p className="mb-6 opacity-90">{t.contact.cta.description}</p>
-              <button
-                onClick={() => onScrollToSection("home")}
-                className={`flex items-center text-white hover:text-cyan-300 transition-colors duration-200 ${
-                  isRTL ? "space-x-reverse" : ""
-                } space-x-2`}
-              >
-                <span>{t.contact.cta.schedule}</span>
-                <ArrowRight
-                  className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`}
+          {/* Right Column */}
+          <div className="space-y-6">
+            {/* Interactive Map */}
+            <div className="bg-white rounded-2xl p-4 shadow-lg">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                {t.contact.map.title}
+              </h3>
+              <div className="relative h-64 rounded-xl overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.3926636536755!2d58.47841731498063!3d23.595857884681675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e91f7e1c5c5c5c5%3A0x5f5f5f5f5f5f5f5f!2sShatti%20Al%20Qurum%2C%20Muscat%2C%20Oman!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="rounded-xl"
+                  title="Talent-In Location"
+                ></iframe>
+                <div className="absolute top-4 right-4 bg-white rounded-lg p-2 shadow-lg">
+                  <MapPin className="w-5 h-5 text-blue-600" />
+                </div>
+              </div>
+              <div className="mt-4 p-2 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
+                <p className="text-sm text-gray-600 mb-2">
+                  <span className="font-semibold text-gray-900">
+                    {t.contact.info.address}:
+                  </span>{" "}
+                  {t.contact.info.addressValue} ( Click on the map to get directions )
+                </p>
+              </div>
+            </div>
+
+            {/* CTA with Image */}
+            <div className=" h-60 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white relative overflow-hidden">
+              <div className="relative z-10">
+                <h3 className="text-xl font-bold mb-4">{t.contact.cta.title}</h3>
+                <p className="mb-6 opacity-90">{t.contact.cta.description}</p>
+                <button
+                  onClick={() => onScrollToSection("home")}
+                  className={`flex items-center text-white hover:text-cyan-300 transition-colors duration-200 ${isRTL ? "space-x-reverse" : ""
+                    } space-x-2`}
+                >
+                  <span>{t.contact.cta.schedule}</span>
+                  <ArrowRight
+                    className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`}
+                  />
+                </button>
+              </div>
+              <div className="absolute top-0 right-0 w-full object-cover opacity-50">
+                <img
+                  src="/GCC-img.png"
+                  alt="GCC"
+                  className="w-full h-full object-cover rounded-bl-2xl"
                 />
-              </button>
+              </div>
             </div>
           </div>
         </div>
