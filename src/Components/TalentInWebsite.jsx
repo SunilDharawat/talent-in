@@ -750,7 +750,7 @@ const MethodologySection = ({ language }) => {
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-lg">
                   {step.description}
                 </p>
               </div>
@@ -1300,7 +1300,7 @@ const ContactSection = ({
               </div>
               <div className="absolute top-0 right-0 w-full object-cover opacity-50">
                 <img
-                  src="/GCC-img.png"
+                  src="/GCC-img-2.png"
                   alt="GCC"
                   className="w-full h-full object-cover rounded-bl-2xl"
                 />
