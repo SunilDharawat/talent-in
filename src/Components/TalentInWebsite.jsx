@@ -1233,6 +1233,7 @@ const ContactSection = ({
                     label: t.contact.info.email,
                     value: "muaath@talent-in.com",
                     gradient: "from-purple-500 to-pink-500",
+                    link: "mailto:muaath@talent-in.com",
                   },
                   {
                     icon: MapPin,
@@ -1245,14 +1246,18 @@ const ContactSection = ({
                     label: t.contact.info.website,
                     value: t.contact.info.websiteValue,
                     gradient: "from-orange-500 to-red-500",
+                    link: t.contact.info.websiteValue.startsWith("http")
+                      ? t.contact.info.websiteValue
+                      : `https://talent-in.netlify.app/`,
                   },
                 ].map((item, index) => {
                   const IconComponent = item.icon;
                   return (
                     <div
                       key={index}
-                      className={`flex items-center ${isRTL ? "space-x-reverse" : ""
-                        } space-x-4`}
+                      className={`flex items-center ${
+                        isRTL ? "space-x-reverse" : ""
+                      } space-x-4`}
                     >
                       <div
                         className={`w-12 h-12 bg-gradient-to-br ${item.gradient} rounded-lg flex items-center justify-center`}
@@ -1263,7 +1268,18 @@ const ContactSection = ({
                         <p className="font-semibold text-gray-900">
                           {item.label}
                         </p>
-                        <p className="text-gray-600">{item.value}</p>
+                        {item.link ? (
+                          <a
+                            href={item.link}
+                            target={item.icon === Globe ? "_blank" : "_self"}
+                            rel="noopener noreferrer"
+                            className="text-blue-600 hover:underline"
+                          >
+                            {item.value}
+                          </a>
+                        ) : (
+                          <p className="text-gray-600">{item.value}</p>
+                        )}
                       </div>
                     </div>
                   );
