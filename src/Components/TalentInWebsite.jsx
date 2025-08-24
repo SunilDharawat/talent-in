@@ -1297,7 +1297,7 @@ const ContactSection = ({
                   {
                     icon: LinkedInIcon,
                     label: t.contact.socialMedia.linkedin,
-                    url: "https://linkedin.com/",
+                    url: "https://www.linkedin.com/company/talent-in-om/",
                     gradient: "from-blue-600 to-blue-700",
                     hoverColor: "hover:text-blue-600",
                   },
@@ -1308,20 +1308,20 @@ const ContactSection = ({
                     gradient: "from-green-500 to-green-600",
                     hoverColor: "hover:text-green-600",
                   },
-                  {
-                    icon: InstagramIcon,
-                    label: t.contact.socialMedia.instagram,
-                    url: "https://instagram.com/",
-                    gradient: "from-pink-500 to-purple-600",
-                    hoverColor: "hover:text-pink-600",
-                  },
-                  {
-                    icon: FacebookIcon,
-                    label: t.contact.socialMedia.facebook,
-                    url: "https://facebook.com/",
-                    gradient: "from-blue-500 to-blue-600",
-                    hoverColor: "hover:text-blue-500",
-                  },
+                  // {
+                  //   icon: InstagramIcon,
+                  //   label: t.contact.socialMedia.instagram,
+                  //   url: "https://instagram.com/",
+                  //   gradient: "from-pink-500 to-purple-600",
+                  //   hoverColor: "hover:text-pink-600",
+                  // },
+                  // {
+                  //   icon: FacebookIcon,
+                  //   label: t.contact.socialMedia.facebook,
+                  //   url: "https://facebook.com/",
+                  //   gradient: "from-blue-500 to-blue-600",
+                  //   hoverColor: "hover:text-blue-500",
+                  // },
                 ].map((social, index) => {
                   const IconComponent = social.icon;
                   return (
