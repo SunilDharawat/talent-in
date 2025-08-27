@@ -17,9 +17,16 @@ import {
   CheckCircle,
   ArrowRight,
   Languages,
+  User,
+  Building,
+  Heart,
+  Lightbulb,
+  UserCheck,
+  FileCheck,
+  GraduationCap,
 } from "lucide-react";
 
-// Custom Social Icons (since Lucide doesn't have all brand icons)
+// Custom Social Icons
 const LinkedInIcon = () => (
   <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
     <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
@@ -28,19 +35,7 @@ const LinkedInIcon = () => (
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.520-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488" />
-  </svg>
-);
-
-const InstagramIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
-    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-  </svg>
-);
-
-const FacebookIcon = () => (
-  <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
-    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488" />
   </svg>
 );
 
@@ -49,63 +44,63 @@ const translations = {
   en: {
     navigation: {
       home: "Home",
-      about: "About",
-      services: "Services",
+      ourSolutions: "Our Solutions",
       methodology: "Methodology",
+      about: "About Us",
       whyUs: "Why Us",
       contact: "Contact",
     },
     hero: {
-      unlock: "Unlock",
-      potential: "Potential",
-      build: "Build",
-      success: "Success",
-      description:
-        "Dynamic talent acquisition firm specializing in executive search and people development for the GCC market. We empower organizations through innovative solutions in leadership coaching, strategic hiring, and advanced psychometric tools.",
-      getStarted: "Get Started",
-      ourServices: "Our Services",
+      howCanWeHelp: "How Can We Help?",
+      subtitle: "Empowering individuals and organizations through expert talent solutions and strategic leadership development.",
+      ourSolutions: "Our Solutions",
     },
     about: {
-      title: "About Talent-In",
+      title: "About Us",
       subtitle: "Committed to Unlocking Full Potential",
       description1:
-        "Talent-In is a dynamic and forward-thinking talent acquisition firm specializing in executive search and people development. Committed to unlocking the full potential of both individuals and organizations, we focus on empowering GCC market through innovative solutions in leadership and career coaching, strategic hiring, and advanced psychometric tools.",
+        "Talent-In is a dynamic and forward-thinking talent acquisition firm specializing in executive search and people development. Committed to unlocking the full potential of both individuals and organizations, we focus on empowering Oman market through innovative solutions in leadership and career coaching, strategic hiring, and advanced psychometric tools.",
       description2:
         "We unlock growth by placing top talent where they make the most impact, ensuring seamless alignment between exceptional candidates and organizational success.",
-      trustedBy: "Trusted by leading GCC organizations",
-      values: {
-        precision: "Precision Matching",
-        excellence: "Excellence Driven",
-        trust: "Trust & Integrity",
-        innovation: "AI Innovation",
-      },
+      trustedBy: "Trusted by leading Oman organizations",
     },
-    services: {
-      title: "Our Services",
-      subtitle:
-        "Comprehensive talent solutions designed to drive organizational success in the GCC market",
-      items: [
-        {
+    solutions: {
+      title: "Our Solutions",
+      subtitle: "What We Do",
+      forYou: "For You",
+      forCorporate: "For Corporate",
+      forYouServices: {
+        careerCounselling: {
+          title: "Career Counselling",
+          description: "Personalized guidance to help you navigate your career path, identify strengths, and make informed decisions for professional growth and fulfillment."
+        },
+        coaching: {
+          title: "Executive & Leadership Coaching",
+          description: "One-on-one coaching sessions designed to enhance your leadership capabilities, develop executive presence, and accelerate your career progression."
+        }
+      },
+      forCorporateServices: {
+        executiveSearch: {
           title: "Executive Search & Talent Acquisition",
-          description:
-            "We specialize in sourcing top industry talent through tailored headhunting strategies, with a commitment to trust, confidentiality, and integrity.",
+          description: "We specialize in sourcing top industry talent through tailored headhunting strategies, with a commitment to trust, confidentiality, and integrity."
         },
-        {
-          title: "Leadership and Career Coaching",
-          description:
-            "We provide personalized coaching to enhance leadership skills, support career planning, and foster long-term professional growth.",
+        coaching: {
+          title: "Executive & Leadership Coaching",
+          description: "We provide personalized coaching to enhance leadership skills, support career planning, and foster long-term professional growth."
         },
-        {
-          title: "People Advisory & Compliance",
-          description:
-            "We ensure compliance with Oman labor laws while managing employee relations through fair grievance handling and transparent conflict resolution.",
+        compliance: {
+          title: "Oman Labor Law Compliance",
+          description: "We ensure compliance with Oman labor laws while managing employee relations through fair grievance handling and transparent conflict resolution."
         },
-        {
-          title: "Smart Hiring: Behavioral Insights & AI Integration",
-          description:
-            "We utilize advanced assessments and AI-driven tools to evaluate candidate personality, skills, and potential, ensuring accurate role fit, faster hiring, and reduced bias.",
+        succession: {
+          title: "Succession Planning",
+          description: "Strategic planning to identify and develop future leaders within your organization, ensuring business continuity and sustainable growth."
         },
-      ],
+        advisory: {
+          title: "People & Culture Advisory",
+          description: "Comprehensive advisory services to build strong organizational culture, improve employee engagement, and optimize HR processes."
+        }
+      }
     },
     methodology: {
       title: "Our Methodology",
@@ -143,8 +138,8 @@ const translations = {
         "Guided by trust, confidentiality and proven results, we partner with you to build teams that inspire success.",
       features: [
         "Bespoke search strategies tailored to your needs",
-        "Advanced assessment tools and AI integration",
-        "Deep GCC market expertise and networks",
+        "Advanced assessment tools",
+        "Deep Oman market expertise and networks",
         "Proven track record of successful placements",
       ],
       excellence: "Excellence in Every Placement",
@@ -186,25 +181,17 @@ const translations = {
         title: "Follow Us",
         linkedin: "LinkedIn",
         whatsapp: "WhatsApp",
-        instagram: "Instagram",
-        facebook: "Facebook",
       },
       map: {
         title: "Find Us",
       },
-      cta: {
-        title: "Ready to Transform Your Team?",
-        description:
-          "Let's discuss how we can help you find the perfect talent for your organization's success.",
-        schedule: "Schedule a Consultation",
-      },
     },
     footer: {
       description:
-        "Empowering GCC organizations through innovative talent acquisition and people development solutions.",
+        "Empowering Oman organizations through innovative talent acquisition and people development solutions.",
       location: "Based in Muscat, Oman - Serving the GCC Region",
       quickLinks: "Quick Links",
-      services: "Our Services",
+      services: "Our Solutions",
       copyright: "© 2025 Talent-In. All rights reserved. | Muscat, Oman",
       developedBy: "Developed by",
       link: "https://sysassist.co/",
@@ -213,73 +200,73 @@ const translations = {
         "Executive Search",
         "Leadership Coaching",
         "People Advisory",
-        "AI-Powered Hiring",
+        "Succession Planning",
       ],
     },
     imageSlider: {
-      empowering: "Empowering GCC Organizations",
+      empowering: "Empowering Oman Organizations",
     },
   },
   ar: {
     navigation: {
       home: "الرئيسية",
-      about: "من نحن",
-      services: "خدماتنا",
+      ourSolutions: "حلولنا",
       methodology: "منهجيتنا",
+      about: "من نحن",
       whyUs: "لماذا نحن",
       contact: "تواصل معنا",
     },
     hero: {
-      unlock: "اكتشف",
-      potential: "الإمكانات",
-      build: "ابني",
-      success: "النجاح",
-      description:
-        "شركة ديناميكية لاكتساب المواهب متخصصة في البحث التنفيذي وتطوير الأشخاص لسوق دول مجلس التعاون الخليجي. نمكن المؤسسات من خلال حلول مبتكرة في التدريب القيادي والتوظيف الاستراتيجي والأدوات النفسية المتقدمة.",
-      getStarted: "ابدأ الآن",
-      ourServices: "خدماتنا",
+      howCanWeHelp: "كيف يمكننا مساعدتك؟",
+      subtitle: "تمكين الأفراد والمؤسسات من خلال حلول المواهب المتخصصة وتطوير القيادة الاستراتيجية.",
+      ourSolutions: "حلولنا",
     },
     about: {
-      title: "حول تالنت-إن",
+      title: "من نحن",
       subtitle: "ملتزمون بإطلاق الإمكانات الكاملة",
       description1:
-        "تالنت-إن هي شركة ديناميكية ومتطلعة للمستقبل لاكتساب المواهب متخصصة في البحث التنفيذي وتطوير الأشخاص. ملتزمون بإطلاق الإمكانات الكاملة للأفراد والمؤسسات على حد سواء، نركز على تمكين سوق دول مجلس التعاون الخليجي من خلال حلول مبتكرة في القيادة والتدريب المهني والتوظيف الاستراتيجي والأدوات النفسية المتقدمة.",
+        "تالنت-إن هي شركة ديناميكية ومتطلعة للمستقبل لاكتساب المواهب متخصصة في البحث التنفيذي وتطوير الأشخاص. ملتزمون بإطلاق الإمكانات الكاملة للأفراد والمؤسسات على حد سواء، نركز على تمكين سوق عمان من خلال حلول مبتكرة في القيادة والتدريب المهني والتوظيف الاستراتيجي والأدوات النفسية المتقدمة.",
       description2:
         "نفتح النمو من خلال وضع أفضل المواهب حيث تحدث أكبر تأثير، مما يضمن التوافق السلس بين المرشحين الاستثنائيين ونجاح المؤسسة.",
-      trustedBy: "موثوقة من قبل المؤسسات الرائدة في دول مجلس التعاون الخليجي",
-      values: {
-        precision: "المطابقة الدقيقة",
-        excellence: "مدفوع بالتميز",
-        trust: "الثقة والنزاهة",
-        innovation: "الابتكار بالذكاء الاصطناعي",
-      },
+      trustedBy: "موثوقة من قبل المؤسسات الرائدة في عمان",
     },
-    services: {
-      title: "خدماتنا",
-      subtitle:
-        "حلول مواهب شاملة مصممة لدفع النجاح التنظيمي في سوق دول مجلس التعاون الخليجي",
-      items: [
-        {
+    solutions: {
+      title: "حلولنا",
+      subtitle: "ما نقدمه",
+      forYou: "لك",
+      forCorporate: "للشركات",
+      forYouServices: {
+        careerCounselling: {
+          title: "الإرشاد المهني",
+          description: "توجيه شخصي لمساعدتك في التنقل في مسارك المهني وتحديد نقاط القوة واتخاذ قرارات مدروسة للنمو المهني والإشباع."
+        },
+        coaching: {
+          title: "التدريب التنفيذي والقيادي",
+          description: "جلسات تدريب فردية مصممة لتعزيز قدراتك القيادية وتطوير الحضور التنفيذي وتسريع تقدمك المهني."
+        }
+      },
+      forCorporateServices: {
+        executiveSearch: {
           title: "البحث التنفيذي واكتساب المواهب",
-          description:
-            "نتخصص في توفير أفضل مواهب الصناعة من خلال استراتيجيات البحث المخصصة، مع الالتزام بالثقة والسرية والنزاهة.",
+          description: "نتخصص في توفير أفضل مواهب الصناعة من خلال استراتيجيات البحث المخصصة، مع الالتزام بالثقة والسرية والنزاهة."
         },
-        {
-          title: "التدريب القيادي والمهني",
-          description:
-            "نقدم تدريبًا شخصيًا لتعزيز المهارات القيادية ودعم التخطيط المهني وتعزيز النمو المهني طويل الأمد.",
+        coaching: {
+          title: "التدريب التنفيذي والقيادي",
+          description: "نقدم تدريبًا شخصيًا لتعزيز المهارات القيادية ودعم التخطيط المهني وتعزيز النمو المهني طويل الأمد."
         },
-        {
-          title: "الاستشارات الشخصية والامتثال",
-          description:
-            "نضمن الامتثال لقوانين العمل العمانية مع إدارة علاقات الموظفين من خلال التعامل العادل مع الشكاوى وحل النزاعات الشفاف.",
+        compliance: {
+          title: "الامتثال لقانون العمل العماني",
+          description: "نضمن الامتثال لقوانين العمل العمانية مع إدارة علاقات الموظفين من خلال التعامل العادل مع الشكاوى وحل النزاعات الشفاف."
         },
-        {
-          title: "التوظيف الذكي: الرؤى السلوكية وتكامل الذكاء الاصطناعي",
-          description:
-            "نستخدم التقييمات المتقدمة والأدوات المدفوعة بالذكاء الاصطناعي لتقييم شخصية المرشح ومهاراته وإمكاناته، مما يضمن الملاءمة الدقيقة للدور والتوظيف الأسرع وتقليل التحيز.",
+        succession: {
+          title: "تخطيط الخلافة",
+          description: "التخطيط الاستراتيجي لتحديد وتطوير القادة المستقبليين داخل مؤسستك، مما يضمن استمرارية الأعمال والنمو المستدام."
         },
-      ],
+        advisory: {
+          title: "استشارات الأشخاص والثقافة",
+          description: "خدمات استشارية شاملة لبناء ثقافة تنظيمية قوية وتحسين مشاركة الموظفين وتحسين عمليات الموارد البشرية."
+        }
+      }
     },
     methodology: {
       title: "منهجيتنا",
@@ -317,8 +304,8 @@ const translations = {
         "بتوجيه من الثقة والسرية والنتائج المثبتة، نتشارك معك لبناء فرق تلهم النجاح.",
       features: [
         "استراتيجيات بحث مخصصة مصممة لاحتياجاتك",
-        "أدوات تقييم متقدمة وتكامل الذكاء الاصطناعي",
-        "خبرة عميقة في السوق والشبكات في دول مجلس التعاون الخليجي",
+        "أدوات تقييم متقدمة",
+        "خبرة عميقة في السوق والشبكات في عمان",
         "سجل حافل مثبت من التعيينات الناجحة",
       ],
       excellence: "التميز في كل تعيين",
@@ -358,25 +345,17 @@ const translations = {
         title: "تابعنا",
         linkedin: "لينكد إن",
         whatsapp: "واتساب",
-        instagram: "إنستغرام",
-        facebook: "فيسبوك",
       },
       map: {
         title: "اعثر علينا",
       },
-      cta: {
-        title: "مستعد لتحويل فريقك؟",
-        description:
-          "دعنا نناقش كيف يمكننا مساعدتك في العثور على المواهب المثالية لنجاح مؤسستك.",
-        schedule: "جدولة استشارة",
-      },
     },
     footer: {
       description:
-        "تمكين منظمات دول مجلس التعاون الخليجي من خلال حلول اكتساب المواهب المبتكرة وتطوير الأشخاص.",
+        "تمكين منظمات عمان من خلال حلول اكتساب المواهب المبتكرة وتطوير الأشخاص.",
       location: "مقرها في مسقط، عُمان - تخدم منطقة دول مجلس التعاون الخليجي",
       quickLinks: "روابط سريعة",
-      services: "خدماتنا",
+      services: "حلولنا",
       copyright: "© 2025 تالنت-إن. جميع الحقوق محفوظة. | مسقط، عُمان",
       developedBy: "تم تطويره بواسطة",
       link: "https://sysassist.co/",
@@ -385,86 +364,15 @@ const translations = {
         "البحث التنفيذي",
         "التدريب القيادي",
         "الاستشارات الشخصية",
-        "التوظيف بالذكاء الاصطناعي",
+        "تخطيط الخلافة",
       ],
     },
     imageSlider: {
-      empowering: "تمكين منظمات دول مجلس التعاون الخليجي",
+      empowering: "تمكين منظمات عمان",
     },
   },
 };
 
-// Image Slider Component
-// const ImageSlider = ({ language }) => {
-//   const images = [
-//     "/GCC-img.png",
-//     "/GCC-img-1.png",
-//     "/GCC-img-2.png",
-//     "/GCC-img-3.png",
-//     "/GCC-img-4.png",
-//   ];
-//   const [currentIndex, setCurrentIndex] = useState(0);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setCurrentIndex((prev) => (prev + 1) % images.length);
-//     }, 3000);
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   const t = translations[language];
-
-//   return (
-//     <div className="relative">
-//       <div
-//         className="w-full h-96 rounded-2xl flex items-center justify-center bg-cover bg-center transition-all duration-1000"
-//         style={{ backgroundImage: `url('${images[currentIndex]}')` }}
-//       />
-//       <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full opacity-20 animate-pulse" />
-//       <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full opacity-20 animate-pulse" />
-//       <div className="text-center drop-shadow-lg mt-4">
-//         <p className="text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-//           {t.imageSlider.empowering}
-//         </p>
-//       </div>
-//     </div>
-//   );
-// };
-// const ImageSlider = ({ language }) => {
-//   const images = [
-//     "/GCC-img.png",
-//     "/GCC-img-1.png",
-//     "/GCC-img-2.png",
-//     "/GCC-img-3.png",
-//     "/GCC-img-4.png",
-//   ];
-//   const [currentIndex, setCurrentIndex] = useState(0);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setCurrentIndex((prev) => (prev + 1) % images.length);
-//     }, 3000);
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   const t = translations[language];
-
-//   return (
-//     <div className="relative">
-//       <div
-//         className="w-full h-60 md:h-96  lg:h-96 rounded-2xl flex items-center justify-center bg-cover bg-center transition-all duration-1000"
-//         style={{ backgroundImage: `url('${images[currentIndex]}')` }}
-//       />
-//       <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full opacity-20 animate-pulse" />
-//       <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full opacity-20 animate-pulse" />
-//       <div className="text-center drop-shadow-lg mt-4">
-//         <p className="text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-//           {t.imageSlider.empowering}
-//         </p>
-//       </div>
-//     </div>
-//   );
-// };
 const ImageSlider = ({ language }) => {
   const images = [
     "/GCC-img.png",
@@ -509,7 +417,6 @@ const ImageSlider = ({ language }) => {
   );
 };
 
-// Navigation Component
 const Navigation = ({
   language,
   isMenuOpen,
@@ -523,15 +430,15 @@ const Navigation = ({
 
   const navigationItems = [
     { label: t.navigation.home, id: "home" },
-    { label: t.navigation.about, id: "about" },
-    { label: t.navigation.services, id: "services" },
+    { label: t.navigation.ourSolutions, id: "solutions" },
     { label: t.navigation.methodology, id: "methodology" },
+    { label: t.navigation.about, id: "about" },
     { label: t.navigation.whyUs, id: "why-us" },
     { label: t.navigation.contact, id: "contact" },
   ];
 
   return (
-    <nav className="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
+    <nav className="fixed w-full bg-white/99 00f423 backdrop-blur-sm z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-18">
           {/* Logo */}
@@ -539,7 +446,7 @@ const Navigation = ({
             <img
               src="/Talentin_Logo.jpg"
               alt="Talent-In Logo"
-              className="h-10 rounded-lg object-cover"
+              className="h-14 rounded-lg object-cover"
             />
           </div>
 
@@ -553,7 +460,7 @@ const Navigation = ({
                 <button
                   key={item.id}
                   onClick={() => onScrollToSection(item.id)}
-                  className={`px-3 py-2 text-sm font-medium transition-colors duration-200 cursor-pointer ${activeSection === item.id
+                  className={`px-3 py-2 text-md font-bold transition-colors duration-200 cursor-pointer ${activeSection === item.id
                     ? "text-blue-600 border-b-2 border-blue-600"
                     : "text-gray-700 hover:text-blue-600"
                     }`}
@@ -611,50 +518,232 @@ const Navigation = ({
   );
 };
 
-// Hero Section Component
+// Hero Section Component - Redesigned
 const HeroSection = ({ language, onScrollToSection }) => {
   const t = translations[language];
 
   return (
     <section
       id="home"
-      className="pt-16 min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-purple-50"
+      className="pt-16 min-h-screen flex items-center bg-cover bg-center relative"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/GCC-img.png')`,
+      }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="animate-fade-in-up">
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              {t.hero.unlock}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                {" "}
-                {t.hero.potential}
-              </span>
-              <br />
-              {t.hero.build}
-              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                {" "}
-                {t.hero.success}
-              </span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              {t.hero.description}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => onScrollToSection("contact")}
-                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-              >
-                {t.hero.getStarted}
-              </button>
-              <button
-                onClick={() => onScrollToSection("services")}
-                className="px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300"
-              >
-                {t.hero.ourServices}
-              </button>
-            </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-white">
+        <div className="animate-fade-in-up">
+          <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            {t.hero.howCanWeHelp}
+          </h1>
+          <p className="text-xl mb-8 leading-relaxed max-w-3xl mx-auto opacity-90">
+            {t.hero.subtitle}
+          </p>
+          <div className="flex justify-center">
+            <button
+              onClick={() => onScrollToSection("solutions")}
+              className="px-8 py-4 cursor-pointer bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+            >
+              {t.hero.ourSolutions}
+            </button>
           </div>
-          <ImageSlider language={language} />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Solutions Section Component - Redesigned
+const SolutionsSection = ({ language }) => {
+  const t = translations[language];
+  const isRTL = language === "ar";
+  const [activeTab, setActiveTab] = useState("forYou");
+  const [expandedService, setExpandedService] = useState(null);
+
+  const toggleService = (serviceKey) => {
+    setExpandedService(expandedService === serviceKey ? null : serviceKey);
+  };
+
+  const forYouServices = [
+    {
+      key: "careerCounselling",
+      icon: GraduationCap,
+      title: t.solutions.forYouServices.careerCounselling.title,
+      description: t.solutions.forYouServices.careerCounselling.description,
+      gradient: "from-pink-500 to-rose-500"
+    },
+    {
+      key: "coaching",
+      icon: TrendingUp,
+      title: t.solutions.forYouServices.coaching.title,
+      description: t.solutions.forYouServices.coaching.description,
+      gradient: "from-purple-500 to-indigo-500"
+    }
+  ];
+
+  const forCorporateServices = [
+    {
+      key: "executiveSearch",
+      icon: Search,
+      title: t.solutions.forCorporateServices.executiveSearch.title,
+      description: t.solutions.forCorporateServices.executiveSearch.description,
+      gradient: "from-blue-500 to-cyan-500"
+    },
+    {
+      key: "coaching",
+      icon: TrendingUp,
+      title: t.solutions.forCorporateServices.coaching.title,
+      description: t.solutions.forCorporateServices.coaching.description,
+      gradient: "from-purple-500 to-pink-500"
+    },
+    {
+      key: "compliance",
+      icon: Shield,
+      title: t.solutions.forCorporateServices.compliance.title,
+      description: t.solutions.forCorporateServices.compliance.description,
+      gradient: "from-green-500 to-teal-500"
+    },
+    {
+      key: "succession",
+      icon: Users,
+      title: t.solutions.forCorporateServices.succession.title,
+      description: t.solutions.forCorporateServices.succession.description,
+      gradient: "from-orange-500 to-amber-500"
+    },
+    {
+      key: "advisory",
+      icon: Lightbulb,
+      title: t.solutions.forCorporateServices.advisory.title,
+      description: t.solutions.forCorporateServices.advisory.description,
+      gradient: "from-violet-500 to-purple-500"
+    }
+  ];
+
+  return (
+    <section id="solutions" className="py-20 bg-amber-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            {t.solutions.title}
+          </h2>
+          <h3 className="text-2xl font-semibold text-gray-700 mb-8">
+            {t.solutions.subtitle}
+          </h3>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto" />
+        </div>
+
+        {/* Tab Navigation */}
+        <div className="flex justify-center mb-12">
+          <div className="flex bg-white rounded-full p-2 shadow-lg">
+            <button
+              onClick={() => setActiveTab("forYou")}
+              className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 cursor-pointer ${activeTab === "forYou"
+                ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
+                : "text-gray-600 hover:text-blue-600"
+                }`}
+            >
+              <User className="w-5 h-5" />
+              <span>{t.solutions.forYou}</span>
+            </button>
+            <button
+              onClick={() => setActiveTab("forCorporate")}
+              className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 ml-2 cursor-pointer ${activeTab === "forCorporate"
+                ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
+                : "text-gray-600 hover:text-blue-600"
+                }`}
+            >
+              <Building className="w-5 h-5" />
+              <span>{t.solutions.forCorporate}</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Services Content */}
+        <div className="max-w-4xl mx-auto">
+          {activeTab === "forYou" && (
+            <div className="space-y-4">
+              {forYouServices.map((service) => {
+                const IconComponent = service.icon;
+                const isExpanded = expandedService === service.key;
+
+                return (
+                  <div
+                    key={service.key}
+                    className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
+                  >
+                    <button
+                      onClick={() => toggleService(service.key)}
+                      className="w-full p-6 text-left flex items-center justify-between cursor-pointer hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      <div className="flex items-center space-x-4">
+                        <div
+                          className={`w-12 h-12 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center`}
+                        >
+                          <IconComponent className="w-6 h-6 text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900">
+                          {service.title}
+                        </h3>
+                      </div>
+                      <ChevronDown
+                        className={`w-6 h-6 text-gray-500 transform transition-transform duration-300 ${isExpanded ? "rotate-180" : ""
+                          }`}
+                      />
+                    </button>
+                    {isExpanded && (
+                      <div className="px-6 pb-6 pt-0">
+                        <p className="text-gray-600 leading-relaxed ml-16">
+                          {service.description}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {activeTab === "forCorporate" && (
+            <div className="space-y-4">
+              {forCorporateServices.map((service) => {
+                const IconComponent = service.icon;
+                const isExpanded = expandedService === service.key;
+
+                return (
+                  <div
+                    key={service.key}
+                    className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
+                  >
+                    <button
+                      onClick={() => toggleService(service.key)}
+                      className="w-full cursor-pointer p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      <div className="flex items-center space-x-4">
+                        <div
+                          className={`w-12 h-12 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center`}
+                        >
+                          <IconComponent className="w-6 h-6 text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900">
+                          {service.title}
+                        </h3>
+                      </div>
+                      <ChevronDown
+                        className={`w-6 h-6 text-gray-500 transform transition-transform duration-300 ${isExpanded ? "rotate-180" : ""
+                          }`}
+                      />
+                    </button>
+                    {isExpanded && (
+                      <div className="px-6 pb-6 pt-0">
+                        <p className="text-gray-600 leading-relaxed ml-16">
+                          {service.description}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -664,29 +753,6 @@ const HeroSection = ({ language, onScrollToSection }) => {
 // About Section Component
 const AboutSection = ({ language }) => {
   const t = translations[language];
-
-  const values = [
-    {
-      icon: Target,
-      title: t.about.values.precision,
-      gradient: "from-blue-500 to-cyan-500",
-    },
-    {
-      icon: Award,
-      title: t.about.values.excellence,
-      gradient: "from-purple-500 to-pink-500",
-    },
-    {
-      icon: Shield,
-      title: t.about.values.trust,
-      gradient: "from-green-500 to-teal-500",
-    },
-    {
-      icon: Brain,
-      title: t.about.values.innovation,
-      gradient: "from-orange-500 to-red-500",
-    },
-  ];
 
   return (
     <section id="about" className="py-20 bg-white">
@@ -716,78 +782,8 @@ const AboutSection = ({ language }) => {
           </div>
 
           <div className="relative">
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-8">
-              <div className="grid grid-cols-2 gap-6">
-                {values.map((value, index) => {
-                  const IconComponent = value.icon;
-                  return (
-                    <div key={index} className="text-center">
-                      <div
-                        className={`w-16 h-16 bg-gradient-to-br ${value.gradient} rounded-lg flex items-center justify-center mx-auto mb-3`}
-                      >
-                        <IconComponent className="w-8 h-8 text-white" />
-                      </div>
-                      <h4 className="font-semibold text-gray-900">
-                        {value.title}
-                      </h4>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+            <ImageSlider language={language} />
           </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-// Services Section Component
-const ServicesSection = ({ language }) => {
-  const t = translations[language];
-
-  const services = [
-    { icon: Search, gradient: "from-blue-500 to-cyan-500" },
-    { icon: TrendingUp, gradient: "from-purple-500 to-pink-500" },
-    { icon: Shield, gradient: "from-green-500 to-teal-500" },
-    { icon: Brain, gradient: "from-orange-500 to-red-500" },
-  ];
-
-  return (
-    <section id="services" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            {t.services.title}
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {t.services.subtitle}
-          </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mt-6" />
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {t.services.items.map((service, index) => {
-            const IconComponent = services[index].icon;
-            return (
-              <div
-                key={index}
-                className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300"
-              >
-                <div
-                  className={`w-16 h-16 bg-gradient-to-br ${services[index].gradient} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <IconComponent className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-            );
-          })}
         </div>
       </div>
     </section>
@@ -800,7 +796,7 @@ const MethodologySection = ({ language }) => {
   const isRTL = language === "ar";
 
   return (
-    <section id="methodology" className="py-20 bg-white">
+    <section id="methodology" className="py-20 bg-amber-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -885,7 +881,7 @@ const WhyUsSection = ({ language }) => {
                 <Award className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
                 <h4 className="text-xl font-bold">{t.whyUs.excellence}</h4>
               </div>
-              <div className="grid grid-cols-2 gap-6 text-center">
+              <div className="grid grid-cols-3 gap-6 text-center">
                 <div>
                   <div className="text-3xl font-bold text-cyan-400 mb-2">
                     100%
@@ -896,7 +892,7 @@ const WhyUsSection = ({ language }) => {
                 </div>
                 <div>
                   <div className="text-3xl font-bold text-pink-400 mb-2">
-                    GCC
+                    Oman
                   </div>
                   <div className="text-sm opacity-80">
                     {t.whyUs.stats.market}
@@ -910,14 +906,6 @@ const WhyUsSection = ({ language }) => {
                     {t.whyUs.stats.support}
                   </div>
                 </div>
-                <div>
-                  <div className="text-3xl font-bold text-yellow-400 mb-2">
-                    AI
-                  </div>
-                  <div className="text-sm opacity-80">
-                    {t.whyUs.stats.powered}
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -927,283 +915,12 @@ const WhyUsSection = ({ language }) => {
   );
 };
 
-// Contact Section Component
-// const ContactSection = ({
-//   language,
-//   formData,
-//   onFormChange,
-//   onFormSubmit,
-//   onScrollToSection,
-// }) => {
-//   const t = translations[language];
-//   const isRTL = language === "ar";
-
-//   return (
-//     <section id="contact" className="py-20 bg-gray-50">
-//       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="text-center mb-16">
-//           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-//             {t.contact.title}
-//           </h2>
-//           <p className="text-xl text-gray-600">{t.contact.subtitle}</p>
-//           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mt-6" />
-//         </div>
-
-//         <div className="grid lg:grid-cols-2 gap-12">
-//           {/* Contact Form */}
-//           <div className="bg-white rounded-2xl p-8 shadow-lg">
-//             <h3 className="text-2xl font-bold text-gray-900 mb-6">
-//               {t.contact.form.title}
-//             </h3>
-//             <form onSubmit={onFormSubmit} className="space-y-6">
-//               <div>
-//                 <label className="block text-sm font-medium text-gray-700 mb-2">
-//                   {t.contact.form.name} *
-//                 </label>
-//                 <input
-//                   type="text"
-//                   required
-//                   value={formData.name}
-//                   onChange={(e) =>
-//                     onFormChange({ ...formData, name: e.target.value })
-//                   }
-//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
-//                   placeholder={t.contact.form.namePlaceholder}
-//                 />
-//               </div>
-//               <div>
-//                 <label className="block text-sm font-medium text-gray-700 mb-2">
-//                   {t.contact.form.email} *
-//                 </label>
-//                 <input
-//                   type="email"
-//                   required
-//                   value={formData.email}
-//                   onChange={(e) =>
-//                     onFormChange({ ...formData, email: e.target.value })
-//                   }
-//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
-//                   placeholder={t.contact.form.emailPlaceholder}
-//                 />
-//               </div>
-//               <div>
-//                 <label className="block text-sm font-medium text-gray-700 mb-2">
-//                   {t.contact.form.company}
-//                 </label>
-//                 <input
-//                   type="text"
-//                   value={formData.company}
-//                   onChange={(e) =>
-//                     onFormChange({ ...formData, company: e.target.value })
-//                   }
-//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
-//                   placeholder={t.contact.form.companyPlaceholder}
-//                 />
-//               </div>
-//               <div>
-//                 <label className="block text-sm font-medium text-gray-700 mb-2">
-//                   {t.contact.form.message} *
-//                 </label>
-//                 <textarea
-//                   required
-//                   rows={4}
-//                   value={formData.message}
-//                   onChange={(e) =>
-//                     onFormChange({ ...formData, message: e.target.value })
-//                   }
-//                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
-//                   placeholder={t.contact.form.messagePlaceholder}
-//                 />
-//               </div>
-//               <button
-//                 type="submit"
-//                 className="w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-//               >
-//                 {t.contact.form.sendMessage}
-//               </button>
-//             </form>
-//             {/* Interactive Map */}
-//             <div className="bg-white rounded-2xl p-8 shadow-lg">
-//               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-//                 {t.contact.map.title}
-//               </h3>
-//               <div className="relative h-64 rounded-xl overflow-hidden">
-//                 <iframe
-//                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.3926636536755!2d58.47841731498063!3d23.595857884681675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e91f7e1c5c5c5c5%3A0x5f5f5f5f5f5f5f5f!2sShatti%20Al%20Qurum%2C%20Muscat%2C%20Oman!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s"
-//                   width="100%"
-//                   height="100%"
-//                   style={{ border: 0 }}
-//                   allowFullScreen=""
-//                   loading="lazy"
-//                   referrerPolicy="no-referrer-when-downgrade"
-//                   className="rounded-xl"
-//                   title="Talent-In Location"
-//                 ></iframe>
-//                 <div className="absolute top-4 right-4 bg-white rounded-lg p-2 shadow-lg">
-//                   <MapPin className="w-5 h-5 text-blue-600" />
-//                 </div>
-//               </div>
-//               <div className="mt-4 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl">
-//                 <p className="text-sm text-gray-600 mb-2">
-//                   <span className="font-semibold text-gray-900">
-//                     {t.contact.info.address}:
-//                   </span>{" "}
-//                   {t.contact.info.addressValue}
-//                 </p>
-//                 <p className="text-xs text-gray-500">
-//                   Click on the map to get directions
-//                 </p>
-//               </div>
-//             </div>
-//           </div>
-
-//           {/* Contact Information */}
-//           <div className="space-y-8">
-//             <div className="bg-white rounded-2xl p-8 shadow-lg">
-//               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-//                 {t.contact.info.title}
-//               </h3>
-//               <div className="space-y-6">
-//                 {[
-//                   {
-//                     icon: Phone,
-//                     label: t.contact.info.phone,
-//                     value: "+968 97511711",
-//                     gradient: "from-blue-500 to-cyan-500",
-//                   },
-//                   {
-//                     icon: Mail,
-//                     label: t.contact.info.email,
-//                     value: "muaath@talent-in.com",
-//                     gradient: "from-purple-500 to-pink-500",
-//                   },
-//                   {
-//                     icon: MapPin,
-//                     label: t.contact.info.address,
-//                     value: t.contact.info.addressValue,
-//                     gradient: "from-green-500 to-teal-500",
-//                   },
-//                   {
-//                     icon: Globe,
-//                     label: t.contact.info.website,
-//                     value: t.contact.info.websiteValue,
-//                     gradient: "from-orange-500 to-red-500",
-//                   },
-//                 ].map((item, index) => {
-//                   const IconComponent = item.icon;
-//                   return (
-//                     <div
-//                       key={index}
-//                       className={`flex items-center ${
-//                         isRTL ? "space-x-reverse" : ""
-//                       } space-x-4`}
-//                     >
-//                       <div
-//                         className={`w-12 h-12 bg-gradient-to-br ${item.gradient} rounded-lg flex items-center justify-center`}
-//                       >
-//                         <IconComponent className="w-6 h-6 text-white" />
-//                       </div>
-//                       <div>
-//                         <p className="font-semibold text-gray-900">
-//                           {item.label}
-//                         </p>
-//                         <p className="text-gray-600">{item.value}</p>
-//                       </div>
-//                     </div>
-//                   );
-//                 })}
-//               </div>
-//             </div>
-
-//             {/* Social Media Links */}
-//             <div className="bg-white rounded-2xl p-8 shadow-lg">
-//               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-//                 {t.contact.socialMedia.title}
-//               </h3>
-//               <div className="grid grid-cols-2 gap-4">
-//                 {[
-//                   {
-//                     icon: LinkedInIcon,
-//                     label: t.contact.socialMedia.linkedin,
-//                     url: "https://linkedin.com/",
-//                     gradient: "from-blue-600 to-blue-700",
-//                     hoverColor: "hover:text-blue-600",
-//                   },
-//                   {
-//                     icon: WhatsAppIcon,
-//                     label: t.contact.socialMedia.whatsapp,
-//                     url: "https://wa.me/96897511711",
-//                     gradient: "from-green-500 to-green-600",
-//                     hoverColor: "hover:text-green-600",
-//                   },
-//                   {
-//                     icon: InstagramIcon,
-//                     label: t.contact.socialMedia.instagram,
-//                     url: "https://instagram.com/",
-//                     gradient: "from-pink-500 to-purple-600",
-//                     hoverColor: "hover:text-pink-600",
-//                   },
-//                   {
-//                     icon: FacebookIcon,
-//                     label: t.contact.socialMedia.facebook,
-//                     url: "https://facebook.com/",
-//                     gradient: "from-blue-500 to-blue-600",
-//                     hoverColor: "hover:text-blue-500",
-//                   },
-//                 ].map((social, index) => {
-//                   const IconComponent = social.icon;
-//                   return (
-//                     <a
-//                       key={index}
-//                       href={social.url}
-//                       target="_blank"
-//                       rel="noopener noreferrer"
-//                       className={`group flex items-center p-4 rounded-xl bg-gradient-to-br ${social.gradient} text-white hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300`}
-//                     >
-//                       <div className="flex items-center space-x-3">
-//                         <IconComponent />
-//                         <span className="font-medium">{social.label}</span>
-//                       </div>
-//                     </a>
-//                   );
-//                 })}
-//               </div>
-//             </div>
-
-//             <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
-//               <h3 className="text-xl font-bold mb-4">{t.contact.cta.title}</h3>
-//               <p className="mb-6 opacity-90">{t.contact.cta.description}</p>
-//               <button
-//                 onClick={() => onScrollToSection("home")}
-//                 className={`flex items-center text-white hover:text-cyan-300 transition-colors duration-200 ${
-//                   isRTL ? "space-x-reverse" : ""
-//                 } space-x-2`}
-//               >
-//                 <span>{t.contact.cta.schedule}</span>
-//                 <ArrowRight
-//                   className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`}
-//                 />
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-// Contact Section Component
-const ContactSection = ({
-  language,
-  formData,
-  onFormChange,
-  onFormSubmit,
-  onScrollToSection,
-}) => {
+const ContactSection = ({ language, onScrollToSection }) => {
   const t = translations[language];
   const isRTL = language === "ar";
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-20 bg-amber-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -1255,9 +972,8 @@ const ContactSection = ({
                   return (
                     <div
                       key={index}
-                      className={`flex items-center ${
-                        isRTL ? "space-x-reverse" : ""
-                      } space-x-4`}
+                      className={`flex items-center ${isRTL ? "space-x-reverse" : ""
+                        } space-x-4`}
                     >
                       <div
                         className={`w-12 h-12 bg-gradient-to-br ${item.gradient} rounded-lg flex items-center justify-center`}
@@ -1304,24 +1020,10 @@ const ContactSection = ({
                   {
                     icon: WhatsAppIcon,
                     label: t.contact.socialMedia.whatsapp,
-                    url: "https://wa.me/96897511711",
+                    url: "http://wa.me/96897511711",
                     gradient: "from-green-500 to-green-600",
                     hoverColor: "hover:text-green-600",
                   },
-                  // {
-                  //   icon: InstagramIcon,
-                  //   label: t.contact.socialMedia.instagram,
-                  //   url: "https://instagram.com/",
-                  //   gradient: "from-pink-500 to-purple-600",
-                  //   hoverColor: "hover:text-pink-600",
-                  // },
-                  // {
-                  //   icon: FacebookIcon,
-                  //   label: t.contact.socialMedia.facebook,
-                  //   url: "https://facebook.com/",
-                  //   gradient: "from-blue-500 to-blue-600",
-                  //   hoverColor: "hover:text-blue-500",
-                  // },
                 ].map((social, index) => {
                   const IconComponent = social.icon;
                   return (
@@ -1371,33 +1073,9 @@ const ContactSection = ({
                   <span className="font-semibold text-gray-900">
                     {t.contact.info.address}:
                   </span>{" "}
-                  {t.contact.info.addressValue} ( Click on the map to get directions )
+                  {t.contact.info.addressValue} ( Click on the map to get
+                  directions )
                 </p>
-              </div>
-            </div>
-
-            {/* CTA with Image */}
-            <div className=" h-60 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 text-white relative overflow-hidden">
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold mb-4">{t.contact.cta.title}</h3>
-                <p className="mb-6 opacity-90">{t.contact.cta.description}</p>
-                <button
-                  onClick={() => onScrollToSection("home")}
-                  className={`flex items-center text-white hover:text-cyan-300 transition-colors duration-200 ${isRTL ? "space-x-reverse" : ""
-                    } space-x-2`}
-                >
-                  <span>{t.contact.cta.schedule}</span>
-                  <ArrowRight
-                    className={`w-4 h-4 ${isRTL ? "rotate-180" : ""}`}
-                  />
-                </button>
-              </div>
-              <div className="absolute top-0 right-0 w-full object-cover opacity-50">
-                <img
-                  src="/GCC-img-2.png"
-                  alt="GCC"
-                  className="w-full h-full object-cover rounded-bl-2xl"
-                />
               </div>
             </div>
           </div>
@@ -1412,9 +1090,9 @@ const FooterSection = ({ language, onScrollToSection }) => {
   const t = translations[language];
 
   const quickLinks = [
-    { name: t.navigation.about, id: "about" },
-    { name: t.navigation.services, id: "services" },
+    { name: t.navigation.ourSolutions, id: "solutions" },
     { name: t.navigation.methodology, id: "methodology" },
+    { name: t.navigation.about, id: "about" },
     { name: t.navigation.contact, id: "contact" },
   ];
 
@@ -1483,12 +1161,6 @@ export const TalentInWebsite = () => {
   const [language, setLanguage] = useState("en");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    message: "",
-  });
 
   const isRTL = language === "ar";
 
@@ -1503,9 +1175,9 @@ export const TalentInWebsite = () => {
     const handleScroll = () => {
       const sections = [
         "home",
-        "about",
-        "services",
+        "solutions",
         "methodology",
+        "about",
         "why-us",
         "contact",
       ];
@@ -1543,15 +1215,9 @@ export const TalentInWebsite = () => {
     setIsMenuOpen(false);
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    alert(translations[language].contact.form.successMessage);
-    setFormData({ name: "", email: "", company: "", message: "" });
-  };
-
   return (
     <div
-      className={`min-h-screen bg-white ${isRTL ? "font-arabic" : ""}`}
+      className={`min-h-screen bg-amber-50 ${isRTL ? "font-arabic" : ""}`}
       dir={isRTL ? "rtl" : "ltr"}
     >
       <Navigation
@@ -1564,18 +1230,15 @@ export const TalentInWebsite = () => {
       />
 
       <HeroSection language={language} onScrollToSection={scrollToSection} />
-      <AboutSection language={language} />
-      <ServicesSection language={language} />
+      <SolutionsSection language={language} />
       <MethodologySection language={language} />
+      <AboutSection language={language} />
       <WhyUsSection language={language} />
       <ContactSection
         language={language}
-        formData={formData}
-        onFormChange={setFormData}
-        onFormSubmit={handleFormSubmit}
         onScrollToSection={scrollToSection}
       />
       <FooterSection language={language} onScrollToSection={scrollToSection} />
     </div>
   );
-};
+}
