@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   ChevronDown,
   Users,
-  Target,
   Award,
-  Brain,
   Search,
   TrendingUp,
   Shield,
@@ -15,15 +13,11 @@ import {
   Menu,
   X,
   CheckCircle,
-  ArrowRight,
   Languages,
   User,
   Building,
-  Heart,
   Lightbulb,
-  UserCheck,
-  FileCheck,
-  GraduationCap,
+  Check,
 } from "lucide-react";
 
 // Custom Social Icons
@@ -45,21 +39,21 @@ const translations = {
     navigation: {
       home: "Home",
       ourSolutions: "Our Solutions",
-      methodology: "Methodology",
       about: "About Us",
       whyUs: "Why Us",
       contact: "Contact",
     },
     hero: {
       howCanWeHelp: "How Can We Help?",
-      subtitle: "Empowering individuals and organizations through expert talent solutions and strategic leadership development.",
+      subtitle:
+        "Empowering individuals and organizations through expert talent solutions and strategic leadership development.",
       ourSolutions: "Our Solutions",
     },
     about: {
       title: "About Us",
       subtitle: "Committed to Unlocking Full Potential",
       description1:
-        "Talent-In is a dynamic and forward-thinking talent acquisition firm specializing in executive search and people development. Committed to unlocking the full potential of both individuals and organizations, we focus on empowering Oman market through innovative solutions in leadership and career coaching, strategic hiring, and advanced psychometric tools.",
+        "Talent In is a dynamic and forward-thinking talent acquisition firm specializing in executive search and people development. Committed to unlocking the full potential of both individuals and organizations, we focus on empowering Oman market through innovative solutions in leadership and career coaching, strategic hiring, and advanced psychometric tools.",
       description2:
         "We unlock growth by placing top talent where they make the most impact, ensuring seamless alignment between exceptional candidates and organizational success.",
       trustedBy: "Trusted by leading Oman organizations",
@@ -72,82 +66,68 @@ const translations = {
       forYouServices: {
         careerCounselling: {
           title: "Career Counselling",
-          description: "Personalized guidance to help you navigate your career path, identify strengths, and make informed decisions for professional growth and fulfillment."
+          description:
+            "Personalized guidance to help you navigate your career path, identify strengths, and make informed decisions for professional growth and fulfillment.",
         },
         coaching: {
           title: "Executive & Leadership Coaching",
-          description: "One-on-one coaching sessions designed to enhance your leadership capabilities, develop executive presence, and accelerate your career progression."
-        }
+          description:
+            "Personalized coaching sessions aimed at strengthening leadership skills, building executive presence, and driving accelerated career growth.",
+        },
       },
       forCorporateServices: {
         executiveSearch: {
           title: "Executive Search & Talent Acquisition",
-          description: "We specialize in sourcing top industry talent through tailored headhunting strategies, with a commitment to trust, confidentiality, and integrity."
+          description:
+            "We specialize in sourcing top talent in the Omani industry through tailored headhunting strategies, with a commitment to trust, confidentiality, and integrity.",
         },
         coaching: {
           title: "Executive & Leadership Coaching",
-          description: "We provide personalized coaching to enhance leadership skills, support career planning, and foster long-term professional growth."
+          description:
+            "We provide personalized coaching to enhance leadership skills, support career planning, and foster long-term professional growth.",
         },
         compliance: {
           title: "Oman Labor Law Compliance",
-          description: "We ensure compliance with Oman labor laws while managing employee relations through fair grievance handling and transparent conflict resolution."
+          description:
+            "We ensure compliance with Oman labor laws while managing employee relations through fair grievance management and transparent conflict resolution.",
         },
         succession: {
           title: "Succession Planning",
-          description: "Strategic planning to identify and develop future leaders within your organization, ensuring business continuity and sustainable growth."
+          description:
+            "It is our business continuity approach that involves identifying organizational talent and developing successors for key business-critical roles.",
         },
         advisory: {
           title: "People & Culture Advisory",
-          description: "Comprehensive advisory services to build strong organizational culture, improve employee engagement, and optimize HR processes."
-        }
-      }
-    },
-    methodology: {
-      title: "Our Methodology",
-      subtitle:
-        "A holistic approach to talent management that combines expertise, innovation, and personalized fit-to-purpose",
-      steps: [
-        {
-          title: "Discovery & Client Onboarding",
           description:
-            "Talent In handles client onboarding by understanding organizational culture, role expectations, and leadership challenges, while defining clear deliverables and KPIs.",
+            "Comprehensive advisory services to build strong organizational culture, improve employee engagement, and enhance best practices in Human Resources.",
         },
-        {
-          title: "Market Research & Talent Mapping",
-          description:
-            "We perform market analysis to identify target sectors and talent pools, develops longlists of candidates through databases, networking and referrals.",
-        },
-        {
-          title: "Outreach & Engagement",
-          description:
-            "Engages potential candidates confidentially and conducts preliminary screenings to assess skills, values and career goals.",
-        },
-        {
-          title: "Evaluation & Selection",
-          description:
-            "We conduct comprehensive interviews and assessments, presents shortlisted candidates with detailed evaluation reports.",
-        },
-      ],
+      },
     },
     whyUs: {
-      title: "Why Partner with Talent-In?",
-      subtitle: "We Don't Just Fill Positions - We Build Success",
+      title: "Why Partner with Talent In?",
+      subtitle: "We Don't Just Provide Solutions– We Create an Impact",
       description1:
-        "At Talent In, we go beyond recruitment to connect you with exceptional talent that propels your organization's growth. Our bespoke search strategies, advanced assessment tools and deep market expertise ensure every placement aligns seamlessly with your business requirements.",
+        "At Talent In, we go beyond recruitment to deliver holistic people solutions that drive sustainable growth. From identifying and nurturing top talent to strengthening leadership capabilities, preparing future leaders, ensuring regulatory alignment, and fostering thriving workplace cultures, we empower both organizations and professionals to realize their true potential.",
       description2:
-        "Guided by trust, confidentiality and proven results, we partner with you to build teams that inspire success.",
+        "Guided by trust, expertise, and a proven track record, we ensure the right strategies, people, and culture come together to build long-term excellence.",
       features: [
-        "Bespoke search strategies tailored to your needs",
-        "Advanced assessment tools",
+        "Bespoke strategies that strengthen people and performance",
+        "Practical solutions for evolving workforce needs",
         "Deep Oman market expertise and networks",
-        "Proven track record of successful placements",
+        "Advanced assessment tools",
       ],
       excellence: "Excellence in Every Placement",
+      diagram: {
+        omanFocus: "Oman Market Focus",
+        ethical: "Ethical",
+        practices: "Best International Practices",
+        experience: "20+ Years Expertise",
+      },
       stats: {
-        satisfaction: "Client Satisfaction",
+        satisfaction: "Ethical",
         market: "Market Focus",
-        support: "Support",
-        powered: "Powered",
+        support: "Years expertise",
+        powered: "Best International Practices",
       },
     },
     contact: {
@@ -175,10 +155,10 @@ const translations = {
         address: "Address",
         website: "Website",
         addressValue: "Shatti Al Qurum, Muscat, Oman",
-        websiteValue: "www.talent-in.com",
+        websiteValue: "www.talentin.com",
       },
       socialMedia: {
-        title: "Follow Us",
+        title: "Social Media",
         linkedin: "LinkedIn",
         whatsapp: "WhatsApp",
       },
@@ -192,7 +172,7 @@ const translations = {
       location: "Based in Muscat, Oman - Serving the GCC Region",
       quickLinks: "Quick Links",
       services: "Our Solutions",
-      copyright: "© 2025 Talent-In. All rights reserved. | Muscat, Oman",
+      copyright: "© 2025 Talent In. All rights reserved. | Muscat, Oman",
       developedBy: "Developed by",
       link: "https://sysassist.co/",
       address: "SysAssist IT Solutions, Indore, India",
@@ -210,110 +190,97 @@ const translations = {
   ar: {
     navigation: {
       home: "الرئيسية",
-      ourSolutions: "حلولنا",
-      methodology: "منهجيتنا",
+      ourSolutions: "خدماتنا",
       about: "من نحن",
       whyUs: "لماذا نحن",
       contact: "تواصل معنا",
     },
     hero: {
-      howCanWeHelp: "كيف يمكننا مساعدتك؟",
-      subtitle: "تمكين الأفراد والمؤسسات من خلال حلول المواهب المتخصصة وتطوير القيادة الاستراتيجية.",
-      ourSolutions: "حلولنا",
+      howCanWeHelp: "كيف نقدر نساعدك؟",
+      subtitle:
+        "تمكين الأفراد والمؤسسات من خلال حلول المواهب المتخصصة وتطوير القيادة الاستراتيجية.",
+      ourSolutions: "خدماتنا",
     },
     about: {
       title: "من نحن",
       subtitle: "ملتزمون بإطلاق الإمكانات الكاملة",
       description1:
-        "تالنت-إن هي شركة ديناميكية ومتطلعة للمستقبل لاكتساب المواهب متخصصة في البحث التنفيذي وتطوير الأشخاص. ملتزمون بإطلاق الإمكانات الكاملة للأفراد والمؤسسات على حد سواء، نركز على تمكين سوق عمان من خلال حلول مبتكرة في القيادة والتدريب المهني والتوظيف الاستراتيجي والأدوات النفسية المتقدمة.",
+        "تـالنت-إن هي شركة رائدة في استقطاب الكفاءات، تتميز برؤية مبتكرة ونهج استراتيجي في البحث التنفيذي وتطوير الأفراد. نلتزم بإطلاق الإمكانات الحقيقية للأفراد والمؤسسات، ونعمل على تمكين السوق العُماني من خلال حلول متقدمة في مجال القيادة والتوجيه المهني، التوظيف الاستراتيجي، وأدوات القياس النفسي الحديثة."
+      ,
       description2:
-        "نفتح النمو من خلال وضع أفضل المواهب حيث تحدث أكبر تأثير، مما يضمن التوافق السلس بين المرشحين الاستثنائيين ونجاح المؤسسة.",
+        "نُسهم في تحقيق النمو عبر اختيار أفضل الكفاءات ووضعها في المواقع الأكثر تأثيرًا، بما يضمن التوافق المثالي بين المواهب المتميزة ونجاح المؤسسات",
       trustedBy: "موثوقة من قبل المؤسسات الرائدة في عمان",
     },
     solutions: {
-      title: "حلولنا",
+      title: "خدماتنا",
       subtitle: "ما نقدمه",
       forYou: "لك",
       forCorporate: "للشركات",
       forYouServices: {
         careerCounselling: {
           title: "الإرشاد المهني",
-          description: "توجيه شخصي لمساعدتك في التنقل في مسارك المهني وتحديد نقاط القوة واتخاذ قرارات مدروسة للنمو المهني والإشباع."
+          description:
+            "توجيه شخصي لمساعدتك في التنقل في مسارك المهني وتحديد نقاط القوة واتخاذ قرارات مدروسة للنمو المهني والإشباع.",
         },
         coaching: {
           title: "التدريب التنفيذي والقيادي",
-          description: "جلسات تدريب فردية مصممة لتعزيز قدراتك القيادية وتطوير الحضور التنفيذي وتسريع تقدمك المهني."
-        }
+          description:
+            "جلسات تدريب شخصية تهدف إلى تعزيز مهارات القيادة، وبناء الحضور التنفيذي، ودفع مسار التطور المهني بوتيرة متسارعة",
+        },
       },
       forCorporateServices: {
         executiveSearch: {
-          title: "البحث التنفيذي واكتساب المواهب",
-          description: "نتخصص في توفير أفضل مواهب الصناعة من خلال استراتيجيات البحث المخصصة، مع الالتزام بالثقة والسرية والنزاهة."
+          title: "إستقطاب المواهب",
+          description:
+            "نحن نتخصص في استقطاب أفضل الكفاءات في السوق العُماني من خلال استراتيجيات استهداف مخصصة، مع التزام تام بالثقة والسرية والنزاهة",
         },
         coaching: {
           title: "التدريب التنفيذي والقيادي",
-          description: "نقدم تدريبًا شخصيًا لتعزيز المهارات القيادية ودعم التخطيط المهني وتعزيز النمو المهني طويل الأمد."
+          description:
+            "نقدم تدريبًا شخصيًا لتعزيز المهارات القيادية ودعم التخطيط المهني وتعزيز النمو المهني طويل الأمد.",
         },
         compliance: {
           title: "الامتثال لقانون العمل العماني",
-          description: "نضمن الامتثال لقوانين العمل العمانية مع إدارة علاقات الموظفين من خلال التعامل العادل مع الشكاوى وحل النزاعات الشفاف."
+          description:
+            "نضمن الالتزام بقوانين العمل في سلطنة عمان مع إدارة علاقات الموظفين من خلال معالجة الشكاوى بشكل عادل وحل النزاعات بشفافية",
         },
         succession: {
           title: "تخطيط الخلافة",
-          description: "التخطيط الاستراتيجي لتحديد وتطوير القادة المستقبليين داخل مؤسستك، مما يضمن استمرارية الأعمال والنمو المستدام."
+          description:
+            "هذا نهجنا لاستمرارية الأعمال، والذي يشمل تحديد المواهب داخل المؤسسة وتطوير البدائل لشغل المناصب الحيوية الأساسية",
         },
         advisory: {
           title: "استشارات الأشخاص والثقافة",
-          description: "خدمات استشارية شاملة لبناء ثقافة تنظيمية قوية وتحسين مشاركة الموظفين وتحسين عمليات الموارد البشرية."
-        }
-      }
-    },
-    methodology: {
-      title: "منهجيتنا",
-      subtitle:
-        "نهج شامل لإدارة المواهب يجمع بين الخبرة والابتكار والملاءمة الشخصية للغرض",
-      steps: [
-        {
-          title: "الاستكشاف وإعداد العميل",
           description:
-            "تتعامل تالنت إن مع إعداد العميل من خلال فهم الثقافة التنظيمية وتوقعات الدور والتحديات القيادية، مع تحديد المخرجات ومؤشرات الأداء الرئيسية الواضحة.",
+            "خدمات استشارية شاملة لبناء ثقافة مؤسسية قوية، وتعزيز مشاركة الموظفين، وتحسين أفضل الممارسات في إدارة الموارد البشرية",
         },
-        {
-          title: "بحوث السوق ورسم خرائط المواهب",
-          description:
-            "نقوم بتحليل السوق لتحديد القطاعات المستهدفة ومجموعات المواهب، ونطور قوائم طويلة من المرشحين من خلال قواعد البيانات والشبكات والإحالات.",
-        },
-        {
-          title: "التواصل والمشاركة",
-          description:
-            "يشرك المرشحين المحتملين بسرية ويجري فحصًا أوليًا لتقييم المهارات والقيم والأهداف المهنية.",
-        },
-        {
-          title: "التقييم والاختيار",
-          description:
-            "نقوم بإجراء مقابلات وتقييمات شاملة، ونقدم المرشحين المدرجين في القائمة المختصرة مع تقارير تقييم مفصلة.",
-        },
-      ],
+      },
     },
     whyUs: {
-      title: "لماذا الشراكة مع تالنت-إن؟",
-      subtitle: "نحن لا نملأ المناصب فقط - نحن نبني النجاح",
+      title: "لماذا الشراكة مع تالنت إن؟",
+      subtitle: "نحن لا نقدم الحلول فحسب – بل نحدث فرقاً",
       description1:
-        "في تالنت إن، نتجاوز التوظيف لنربطك بالمواهب الاستثنائية التي تدفع نمو مؤسستك. استراتيجيات البحث المخصصة لدينا وأدوات التقييم المتقدمة والخبرة العميقة في السوق تضمن أن كل تعيين يتماشى بسلاسة مع متطلبات عملك.",
+        "في تـالنت-إن، نتجاوز حدود التوظيف لنقدم حلولاً شاملة لإدارة المواهب تدعم النمو المستدام. بدءاً من اكتشاف ورعاية أفضل الكفاءات، وتعزيز قدرات القيادة، وإعداد القادة المستقبليين، وضمان الامتثال التنظيمي، وصولاً إلى تعزيز ثقافات العمل المزدهرة، نمكّن المؤسسات والمحترفين على حد سواء من تحقيق إمكاناتهم الحقيقية.",
       description2:
-        "بتوجيه من الثقة والسرية والنتائج المثبتة، نتشارك معك لبناء فرق تلهم النجاح.",
+        "بفضل الثقة والخبرة والسجل المثبت من النجاحات، نضمن التوافق الأمثل بين الاستراتيجيات الصحيحة، والمواهب المناسبة، وثقافة العمل المتميزة لبناء التميز طويل الأمد.",
       features: [
-        "استراتيجيات بحث مخصصة مصممة لاحتياجاتك",
+        "استراتيجيات مخصصة تعزز الأفراد والأداء",
+        "حلول عملية لتلبية احتياجات القوى العاملة المتطورة",
+        "خبرة واسعة وشبكات عميقة في سوق عمان",
         "أدوات تقييم متقدمة",
-        "خبرة عميقة في السوق والشبكات في عمان",
-        "سجل حافل مثبت من التعيينات الناجحة",
       ],
       excellence: "التميز في كل تعيين",
+      diagram: {
+        omanFocus: "التركيز على السوق العُماني",
+        ethical: "أخلاقي",
+        practices: "أفضل الممارسات الدولية",
+        experience: "خبرة +20 سنة",
+      },
       stats: {
-        satisfaction: "رضا العملاء",
-        market: "التركيز على السوق",
-        support: "الدعم",
-        powered: "مدعوم",
+        satisfaction: "أخلاقي",
+        market: "التركيز على السوق العُماني",
+        support: "خبرة +20 سنة",
+        powered: "أفضل الممارسات الدولية",
       },
     },
     contact: {
@@ -339,7 +306,7 @@ const translations = {
         address: "العنوان",
         website: "الموقع الإلكتروني",
         addressValue: "شاطئ القرم، مسقط، عُمان",
-        websiteValue: "www.talent-in.com",
+        websiteValue: "www.talentin.com",
       },
       socialMedia: {
         title: "تابعنا",
@@ -355,8 +322,8 @@ const translations = {
         "تمكين منظمات عمان من خلال حلول اكتساب المواهب المبتكرة وتطوير الأشخاص.",
       location: "مقرها في مسقط، عُمان - تخدم منطقة دول مجلس التعاون الخليجي",
       quickLinks: "روابط سريعة",
-      services: "حلولنا",
-      copyright: "© 2025 تالنت-إن. جميع الحقوق محفوظة. | مسقط، عُمان",
+      services: "خدماتنا",
+      copyright: "© 2025 تالنت إن. جميع الحقوق محفوظة. | مسقط، عُمان",
       developedBy: "تم تطويره بواسطة",
       link: "https://sysassist.co/",
       address: "سيستم أسيست لتقنية المعلومات، إندور، الهند",
@@ -431,7 +398,6 @@ const Navigation = ({
   const navigationItems = [
     { label: t.navigation.home, id: "home" },
     { label: t.navigation.ourSolutions, id: "solutions" },
-    { label: t.navigation.methodology, id: "methodology" },
     { label: t.navigation.about, id: "about" },
     { label: t.navigation.whyUs, id: "why-us" },
     { label: t.navigation.contact, id: "contact" },
@@ -440,13 +406,14 @@ const Navigation = ({
   return (
     <nav className="fixed w-full bg-white/99 00f423 backdrop-blur-sm z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-18">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex items-center">
             <img
               src="/Talentin_Logo.jpg"
-              alt="Talent-In Logo"
-              className="h-14 rounded-lg object-cover"
+              alt="Talent In Logo"
+              className="h-16 rounded-lg object-cover"
+              onClick={() => onScrollToSection("home")}
             />
           </div>
 
@@ -518,14 +485,14 @@ const Navigation = ({
   );
 };
 
-// Hero Section Component - Redesigned
+// Hero Section Component
 const HeroSection = ({ language, onScrollToSection }) => {
   const t = translations[language];
 
   return (
     <section
       id="home"
-      className="pt-16 min-h-screen flex items-center bg-cover bg-center relative"
+      className="pt-20 min-h-screen flex items-center bg-cover bg-center relative"
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/GCC-img.png')`,
       }}
@@ -552,11 +519,11 @@ const HeroSection = ({ language, onScrollToSection }) => {
   );
 };
 
-// Solutions Section Component - Redesigned
+// Solutions Section Component - Updated tab order
 const SolutionsSection = ({ language }) => {
   const t = translations[language];
   const isRTL = language === "ar";
-  const [activeTab, setActiveTab] = useState("forYou");
+  const [activeTab, setActiveTab] = useState("forCorporate");
   const [expandedService, setExpandedService] = useState(null);
 
   const toggleService = (serviceKey) => {
@@ -565,19 +532,12 @@ const SolutionsSection = ({ language }) => {
 
   const forYouServices = [
     {
-      key: "careerCounselling",
-      icon: GraduationCap,
-      title: t.solutions.forYouServices.careerCounselling.title,
-      description: t.solutions.forYouServices.careerCounselling.description,
-      gradient: "from-pink-500 to-rose-500"
-    },
-    {
       key: "coaching",
       icon: TrendingUp,
       title: t.solutions.forYouServices.coaching.title,
       description: t.solutions.forYouServices.coaching.description,
-      gradient: "from-purple-500 to-indigo-500"
-    }
+      gradient: "from-purple-500 to-indigo-500",
+    },
   ];
 
   const forCorporateServices = [
@@ -586,36 +546,29 @@ const SolutionsSection = ({ language }) => {
       icon: Search,
       title: t.solutions.forCorporateServices.executiveSearch.title,
       description: t.solutions.forCorporateServices.executiveSearch.description,
-      gradient: "from-blue-500 to-cyan-500"
-    },
-    {
-      key: "coaching",
-      icon: TrendingUp,
-      title: t.solutions.forCorporateServices.coaching.title,
-      description: t.solutions.forCorporateServices.coaching.description,
-      gradient: "from-purple-500 to-pink-500"
+      gradient: "from-blue-500 to-cyan-500",
     },
     {
       key: "compliance",
       icon: Shield,
       title: t.solutions.forCorporateServices.compliance.title,
       description: t.solutions.forCorporateServices.compliance.description,
-      gradient: "from-green-500 to-teal-500"
+      gradient: "from-green-500 to-teal-500",
     },
     {
       key: "succession",
       icon: Users,
       title: t.solutions.forCorporateServices.succession.title,
       description: t.solutions.forCorporateServices.succession.description,
-      gradient: "from-orange-500 to-amber-500"
+      gradient: "from-orange-500 to-amber-500",
     },
     {
       key: "advisory",
       icon: Lightbulb,
       title: t.solutions.forCorporateServices.advisory.title,
       description: t.solutions.forCorporateServices.advisory.description,
-      gradient: "from-violet-500 to-purple-500"
-    }
+      gradient: "from-violet-500 to-purple-500",
+    },
   ];
 
   return (
@@ -631,22 +584,12 @@ const SolutionsSection = ({ language }) => {
           <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto" />
         </div>
 
-        {/* Tab Navigation */}
+        {/* Tab Navigation - For Corporate on left, For You on right */}
         <div className="flex justify-center mb-12">
           <div className="flex bg-white rounded-full p-2 shadow-lg">
             <button
-              onClick={() => setActiveTab("forYou")}
-              className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 cursor-pointer ${activeTab === "forYou"
-                ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
-                : "text-gray-600 hover:text-blue-600"
-                }`}
-            >
-              <User className="w-5 h-5" />
-              <span>{t.solutions.forYou}</span>
-            </button>
-            <button
               onClick={() => setActiveTab("forCorporate")}
-              className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 ml-2 cursor-pointer ${activeTab === "forCorporate"
+              className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 cursor-pointer ${activeTab === "forCorporate"
                 ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
                 : "text-gray-600 hover:text-blue-600"
                 }`}
@@ -654,14 +597,24 @@ const SolutionsSection = ({ language }) => {
               <Building className="w-5 h-5" />
               <span>{t.solutions.forCorporate}</span>
             </button>
+            <button
+              onClick={() => setActiveTab("forYou")}
+              className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 ml-2 cursor-pointer ${activeTab === "forYou"
+                ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg"
+                : "text-gray-600 hover:text-blue-600"
+                }`}
+            >
+              <User className="w-5 h-5" />
+              <span>{t.solutions.forYou}</span>
+            </button>
           </div>
         </div>
 
         {/* Services Content */}
         <div className="max-w-4xl mx-auto">
-          {activeTab === "forYou" && (
+          {activeTab === "forCorporate" && (
             <div className="space-y-4">
-              {forYouServices.map((service) => {
+              {forCorporateServices.map((service) => {
                 const IconComponent = service.icon;
                 const isExpanded = expandedService === service.key;
 
@@ -672,7 +625,7 @@ const SolutionsSection = ({ language }) => {
                   >
                     <button
                       onClick={() => toggleService(service.key)}
-                      className="w-full p-6 text-left flex items-center justify-between cursor-pointer hover:bg-gray-50 transition-colors duration-200"
+                      className="w-full cursor-pointer p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
                     >
                       <div className="flex items-center space-x-4">
                         <div
@@ -702,9 +655,9 @@ const SolutionsSection = ({ language }) => {
             </div>
           )}
 
-          {activeTab === "forCorporate" && (
+          {activeTab === "forYou" && (
             <div className="space-y-4">
-              {forCorporateServices.map((service) => {
+              {forYouServices.map((service) => {
                 const IconComponent = service.icon;
                 const isExpanded = expandedService === service.key;
 
@@ -715,7 +668,7 @@ const SolutionsSection = ({ language }) => {
                   >
                     <button
                       onClick={() => toggleService(service.key)}
-                      className="w-full cursor-pointer p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                      className="w-full p-6 text-left flex items-center justify-between cursor-pointer hover:bg-gray-50 transition-colors duration-200"
                     >
                       <div className="flex items-center space-x-4">
                         <div
@@ -790,53 +743,8 @@ const AboutSection = ({ language }) => {
   );
 };
 
-// Methodology Section Component
-const MethodologySection = ({ language }) => {
-  const t = translations[language];
-  const isRTL = language === "ar";
 
-  return (
-    <section id="methodology" className="py-20 bg-amber-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            {t.methodology.title}
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {t.methodology.subtitle}
-          </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mt-6" />
-        </div>
 
-        <div className="space-y-8">
-          {t.methodology.steps.map((step, index) => (
-            <div
-              key={index}
-              className={`flex items-start group ${isRTL ? "space-x-reverse" : ""
-                } space-x-6`}
-            >
-              <div className="flex-shrink-0">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-300">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-              </div>
-              <div className="flex-1 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 group-hover:shadow-lg transition-shadow duration-300">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {step.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed text-lg">
-                  {step.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-// Why Us Section Component
 const WhyUsSection = ({ language }) => {
   const t = translations[language];
   const isRTL = language === "ar";
@@ -849,12 +757,12 @@ const WhyUsSection = ({ language }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4">{t.whyUs.title}</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-pink-400 mx-auto" />
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
           <div>
-            <h3 className="text-2xl font-bold mb-6">{t.whyUs.subtitle}</h3>
+            <h3 className="text-[22px] font-bold mb-6">{t.whyUs.subtitle}</h3>
             <p className="text-lg mb-6 leading-relaxed opacity-90">
               {t.whyUs.description1}
             </p>
@@ -875,40 +783,19 @@ const WhyUsSection = ({ language }) => {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-              <div className="text-center mb-8">
-                <Award className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
-                <h4 className="text-xl font-bold">{t.whyUs.excellence}</h4>
-              </div>
-              <div className="grid grid-cols-3 gap-6 text-center">
-                <div>
-                  <div className="text-3xl font-bold text-cyan-400 mb-2">
-                    100%
-                  </div>
-                  <div className="text-sm opacity-80">
-                    {t.whyUs.stats.satisfaction}
-                  </div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-pink-400 mb-2">
-                    Oman
-                  </div>
-                  <div className="text-sm opacity-80">
-                    {t.whyUs.stats.market}
-                  </div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-green-400 mb-2">
-                    24/7
-                  </div>
-                  <div className="text-sm opacity-80">
-                    {t.whyUs.stats.support}
-                  </div>
-                </div>
-              </div>
+          <div className="w-full flex justify-center">
+            <div className="w-full max-w-md lg:max-w-lg">
+              <img
+                src="/Why_image.png"
+                alt="Talent In Logo"
+                className="w-full rounded-md object-contain"
+              />
             </div>
           </div>
+
+
+
+
         </div>
       </div>
     </section>
@@ -922,7 +809,7 @@ const ContactSection = ({ language, onScrollToSection }) => {
   return (
     <section id="contact" className="py-20 bg-amber-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             {t.contact.title}
           </h2>
@@ -932,7 +819,7 @@ const ContactSection = ({ language, onScrollToSection }) => {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Left Column */}
           <div className="space-y-8">
-            {/* Contact Information */}
+            {/* Contact Information with Social Media */}
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 {t.contact.info.title}
@@ -1000,47 +887,45 @@ const ContactSection = ({ language, onScrollToSection }) => {
                     </div>
                   );
                 })}
-              </div>
-            </div>
 
-            {/* Social Media Links */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                {t.contact.socialMedia.title}
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  {
-                    icon: LinkedInIcon,
-                    label: t.contact.socialMedia.linkedin,
-                    url: "https://www.linkedin.com/company/talent-in-om/",
-                    gradient: "from-blue-600 to-blue-700",
-                    hoverColor: "hover:text-blue-600",
-                  },
-                  {
-                    icon: WhatsAppIcon,
-                    label: t.contact.socialMedia.whatsapp,
-                    url: "http://wa.me/96897511711",
-                    gradient: "from-green-500 to-green-600",
-                    hoverColor: "hover:text-green-600",
-                  },
-                ].map((social, index) => {
-                  const IconComponent = social.icon;
-                  return (
-                    <a
-                      key={index}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`group flex items-center p-4 rounded-xl bg-gradient-to-br ${social.gradient} text-white hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300`}
-                    >
-                      <div className="flex items-center space-x-3">
-                        <IconComponent />
-                        <span className="font-medium">{social.label}</span>
-                      </div>
-                    </a>
-                  );
-                })}
+                {/* Social Media Links - Inside the same white box */}
+                <div className="border-t border-gray-200 pt-6 mt-6">
+                  <h4 className="text-xl font-bold text-gray-900 mb-4">
+                    {t.contact.socialMedia.title}
+                  </h4>
+                  <div className="grid grid-cols-2 gap-4">
+                    {[
+                      {
+                        icon: LinkedInIcon,
+                        label: t.contact.socialMedia.linkedin,
+                        url: "https://www.linkedin.com/company/talent-in-om/",
+                        gradient: "from-blue-600 to-blue-700",
+                      },
+                      {
+                        icon: WhatsAppIcon,
+                        label: t.contact.socialMedia.whatsapp,
+                        url: "http://wa.me/96897511711",
+                        gradient: "from-green-500 to-green-600",
+                      },
+                    ].map((social, index) => {
+                      const IconComponent = social.icon;
+                      return (
+                        <a
+                          key={index}
+                          href={social.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`group flex items-center p-4 rounded-xl bg-gradient-to-br ${social.gradient} text-white hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300`}
+                        >
+                          <div className="flex items-center space-x-3">
+                            <IconComponent />
+                            <span className="font-medium">{social.label}</span>
+                          </div>
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1052,7 +937,7 @@ const ContactSection = ({ language, onScrollToSection }) => {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 {t.contact.map.title}
               </h3>
-              <div className="relative h-64 rounded-xl overflow-hidden">
+              <div className="relative h-90 rounded-xl overflow-hidden">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.3926636536755!2d58.47841731498063!3d23.595857884681675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e91f7e1c5c5c5c5%3A0x5f5f5f5f5f5f5f5f!2sShatti%20Al%20Qurum%2C%20Muscat%2C%20Oman!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s"
                   width="100%"
@@ -1062,7 +947,7 @@ const ContactSection = ({ language, onScrollToSection }) => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="rounded-xl"
-                  title="Talent-In Location"
+                  title="Talent In Location"
                 ></iframe>
                 <div className="absolute top-4 right-4 bg-white rounded-lg p-2 shadow-lg">
                   <MapPin className="w-5 h-5 text-blue-600" />
@@ -1091,8 +976,8 @@ const FooterSection = ({ language, onScrollToSection }) => {
 
   const quickLinks = [
     { name: t.navigation.ourSolutions, id: "solutions" },
-    { name: t.navigation.methodology, id: "methodology" },
     { name: t.navigation.about, id: "about" },
+    { name: t.navigation.whyUs, id: "why-us" },
     { name: t.navigation.contact, id: "contact" },
   ];
 
@@ -1103,8 +988,8 @@ const FooterSection = ({ language, onScrollToSection }) => {
           <div>
             <img
               src="/Talentin_Logo.jpg"
-              alt="Talent-In Logo"
-              className="h-10 rounded-lg object-cover mb-4"
+              alt="Talent In Logo"
+              className="h-16 rounded-lg object-cover mb-4"
             />
             <p className="text-gray-400 mb-4">{t.footer.description}</p>
             <p className="text-gray-400">{t.footer.location}</p>
@@ -1173,14 +1058,7 @@ export const TalentInWebsite = () => {
   // Handle scroll to update active section
   useEffect(() => {
     const handleScroll = () => {
-      const sections = [
-        "home",
-        "solutions",
-        "methodology",
-        "about",
-        "why-us",
-        "contact",
-      ];
+      const sections = ["home", "solutions", "about", "why-us", "contact"];
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
@@ -1231,14 +1109,12 @@ export const TalentInWebsite = () => {
 
       <HeroSection language={language} onScrollToSection={scrollToSection} />
       <SolutionsSection language={language} />
-      <MethodologySection language={language} />
       <AboutSection language={language} />
       <WhyUsSection language={language} />
-      <ContactSection
-        language={language}
-        onScrollToSection={scrollToSection}
-      />
+      <ContactSection language={language} onScrollToSection={scrollToSection} />
       <FooterSection language={language} onScrollToSection={scrollToSection} />
     </div>
   );
-}
+};
+
+export default TalentInWebsite;
