@@ -18,6 +18,7 @@ import {
   Building,
   Lightbulb,
   Check,
+  GraduationCap,
 } from "lucide-react";
 
 // Custom Social Icons
@@ -205,7 +206,7 @@ const translations = {
       title: "من نحن",
       subtitle: "ملتزمون بإطلاق الإمكانات الكاملة",
       description1:
-        "تـالنت إن هي شركة رائدة في استقطاب الكفاءات، تتميز برؤية مبتكرة ونهج استراتيجي في البحث التنفيذي وتطوير الأفراد. نلتزم بإطلاق الإمكانات الحقيقية للأفراد والمؤسسات، ونعمل على تمكين السوق العُماني من خلال حلول متقدمة في مجال القيادة والتوجيه المهني، التوظيف الاستراتيجي، وأدوات القياس النفسي الحديثة."
+        "تـالنت-إن هي شركة رائدة في استقطاب الكفاءات، تتميز برؤية مبتكرة ونهج استراتيجي في البحث التنفيذي وتطوير الأفراد. نلتزم بإطلاق الإمكانات الحقيقية للأفراد والمؤسسات، ونعمل على تمكين السوق العُماني من خلال حلول متقدمة في مجال القيادة والتوجيه المهني، التوظيف الاستراتيجي، وأدوات القياس النفسي الحديثة."
       ,
       description2:
         "نُسهم في تحقيق النمو عبر اختيار أفضل الكفاءات ووضعها في المواقع الأكثر تأثيرًا، بما يضمن التوافق المثالي بين المواهب المتميزة ونجاح المؤسسات",
@@ -260,7 +261,7 @@ const translations = {
       title: "لماذا الشراكة مع تالنت إن؟",
       subtitle: "نحن لا نقدم الحلول فحسب – بل نحدث فرقاً",
       description1:
-        "في تـالنت إن، نتجاوز حدود التوظيف لنقدم حلولاً شاملة لإدارة المواهب تدعم النمو المستدام. بدءاً من اكتشاف ورعاية أفضل الكفاءات، وتعزيز قدرات القيادة، وإعداد القادة المستقبليين، وضمان الامتثال التنظيمي، وصولاً إلى تعزيز ثقافات العمل المزدهرة، نمكّن المؤسسات والمحترفين على حد سواء من تحقيق إمكاناتهم الحقيقية.",
+        "في تـالنت-إن، نتجاوز حدود التوظيف لنقدم حلولاً شاملة لإدارة المواهب تدعم النمو المستدام. بدءاً من اكتشاف ورعاية أفضل الكفاءات، وتعزيز قدرات القيادة، وإعداد القادة المستقبليين، وضمان الامتثال التنظيمي، وصولاً إلى تعزيز ثقافات العمل المزدهرة، نمكّن المؤسسات والمحترفين على حد سواء من تحقيق إمكاناتهم الحقيقية.",
       description2:
         "بفضل الثقة والخبرة والسجل المثبت من النجاحات، نضمن التوافق الأمثل بين الاستراتيجيات الصحيحة، والمواهب المناسبة، وثقافة العمل المتميزة لبناء التميز طويل الأمد.",
       features: [
@@ -532,6 +533,13 @@ const SolutionsSection = ({ language }) => {
 
   const forYouServices = [
     {
+      key: "careerCounselling",
+      icon: GraduationCap,
+      title: t.solutions.forYouServices.careerCounselling.title,
+      description: t.solutions.forYouServices.careerCounselling.description,
+      gradient: "from-pink-500 to-rose-500"
+    },
+    {
       key: "coaching",
       icon: TrendingUp,
       title: t.solutions.forYouServices.coaching.title,
@@ -547,6 +555,13 @@ const SolutionsSection = ({ language }) => {
       title: t.solutions.forCorporateServices.executiveSearch.title,
       description: t.solutions.forCorporateServices.executiveSearch.description,
       gradient: "from-blue-500 to-cyan-500",
+    },
+    {
+      key: "coaching",
+      icon: TrendingUp,
+      title: t.solutions.forCorporateServices.coaching.title,
+      description: t.solutions.forCorporateServices.coaching.description,
+      gradient: "from-purple-500 to-pink-500"
     },
     {
       key: "compliance",
