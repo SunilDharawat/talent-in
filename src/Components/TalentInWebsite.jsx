@@ -344,9 +344,10 @@ const translations = {
 
 const ImageSlider = ({ language }) => {
   const images = [
+    "/GCC-img-1.jpg",
+    "/GCC-img-2.jpg",
     "/GCC-img.png",
     "/GCC-img-1.png",
-    "/GCC-img-2.png",
     "/GCC-img-3.png",
     "/GCC-img-4.png",
   ];
