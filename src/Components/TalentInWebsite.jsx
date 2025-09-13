@@ -901,9 +901,9 @@ const ContactSection = ({ language, onScrollToSection }) => {
                   {
                     icon: Mail,
                     label: t.contact.info.email,
-                    value: "muaath@talent-in.com",
+                    value: "aashita@talent-in.com",
                     gradient: "from-purple-500 to-pink-500",
-                    link: "mailto:muaath@talent-in.com",
+                    link: "mailto:aashita@talent-in.com",
                   },
                   {
                     icon: MapPin,
