@@ -107,7 +107,7 @@ const translations = {
     },
     whyUs: {
       title: "Why Partner with Talent In?",
-      subtitle: "We Don't Just Provide Solutions– We Create an Impact",
+      subtitle: "We Don't Just Provide Solutions – We Create an Impact",
       description1:
         "At Talent In, we go beyond recruitment to deliver holistic people solutions that drive sustainable growth. From identifying and nurturing top talent to strengthening leadership capabilities, preparing future leaders, ensuring regulatory alignment, and fostering thriving workplace cultures, we empower both organizations and professionals to realize their true potential.",
       description2:
@@ -342,14 +342,58 @@ const translations = {
   },
 };
 
+// const ImageSlider = ({ language }) => {
+//   const images = [
+//     "/GCC-img-1.jpg",
+//     "/GCC-img-2.jpg",
+//     // "/GCC-img.png",
+//     // "/GCC-img-1.png",
+//     // "/GCC-img-3.png",
+//     // "/GCC-img-4.png",
+//   ];
+//   const [currentIndex, setCurrentIndex] = useState(0);
+
+//   // Preload all images
+//   useEffect(() => {
+//     images.forEach((src) => {
+//       const img = new Image();
+//       img.src = src;
+//     });
+//   }, []);
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setCurrentIndex((prev) => (prev + 1) % images.length);
+//     }, 3000);
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   const t = translations[language];
+
+//   return (
+//     <div className="relative">
+//       <div
+//         className="w-full h-60 md:h-96 lg:h-96 rounded-2xl flex items-center justify-center bg-cover bg-center transition-all duration-1000"
+//         style={{ backgroundImage: `url('${images[currentIndex]}')` }}
+//       />
+//       <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full opacity-20 animate-pulse" />
+//       <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full opacity-20 animate-pulse" />
+//       <div className="text-center drop-shadow-lg mt-4">
+//         <p className="text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+//           {t.imageSlider.empowering}
+//         </p>
+//       </div>
+//     </div>
+//   );
+// };
 const ImageSlider = ({ language }) => {
   const images = [
     "/GCC-img-1.jpg",
     "/GCC-img-2.jpg",
-    // "/GCC-img.png",
-    // "/GCC-img-1.png",
-    // "/GCC-img-3.png",
-    // "/GCC-img-4.png",
+    "/GCC-img-3.JPEG",
+    "/GCC-img-6.JPEG",
+    "/GCC-img-4.JPEG",
+    "/GCC-img-5.JPEG",
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -372,10 +416,15 @@ const ImageSlider = ({ language }) => {
 
   return (
     <div className="relative">
-      <div
-        className="w-full h-60 md:h-96 lg:h-96 rounded-2xl flex items-center justify-center bg-cover bg-center transition-all duration-1000"
-        style={{ backgroundImage: `url('${images[currentIndex]}')` }}
-      />
+      {/* Solution 1: Using img tag with object-contain (Shows full image) */}
+      <div className="w-full h-60 md:h-96 lg:h-96 rounded-2xl overflow-hidden  flex items-center justify-center">
+        <img
+          src={images[currentIndex]}
+          alt={`Slide ${currentIndex + 1}`}
+          className="max-w-full max-h-full object-contain transition-all duration-1000 rounded-2xl"
+        />
+      </div>
+
       <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full opacity-20 animate-pulse" />
       <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full opacity-20 animate-pulse" />
       <div className="text-center drop-shadow-lg mt-4">
