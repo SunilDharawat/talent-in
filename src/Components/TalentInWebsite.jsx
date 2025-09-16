@@ -154,9 +154,9 @@ const translations = {
         title: "Contact Information",
         phone: "Phone",
         email: "Email",
-        address: "Address",
+        address: "Address",  
         website: "Website",
-        addressValue: "Shatti Al Qurum, Muscat, Oman",
+        addressValue: "Bawsher St, Muscat, Oman",
         websiteValue: "www.talentin.com",
       },
       socialMedia: {
@@ -177,7 +177,7 @@ const translations = {
       copyright: "© 2025 Talent In. All rights reserved. | Muscat, Oman",
       developedBy: "Developed by",
       link: "https://sysassist.co/",
-      address: "SysAssist IT Solutions, Indore, India",
+      address: "SysAssist IT Solutions",
       servicesList: [
         "Executive Search",
         "Leadership Coaching",
@@ -307,7 +307,7 @@ const translations = {
         email: "البريد الإلكتروني",
         address: "العنوان",
         website: "الموقع الإلكتروني",
-        addressValue: "شاطئ القرم، مسقط، عُمان",
+        addressValue: "شارع بوشر، مسقط، عُمان",
         websiteValue: "www.talentin.com",
       },
       socialMedia: {
@@ -328,7 +328,7 @@ const translations = {
       copyright: "© 2025 تالنت إن. جميع الحقوق محفوظة. | مسقط، عُمان",
       developedBy: "تم تطويره بواسطة",
       link: "https://sysassist.co/",
-      address: "سيستم أسيست لتقنية المعلومات، إندور، الهند",
+      address: "سيستم أسيست لتقنية المعلومات،",
       servicesList: [
         "البحث التنفيذي",
         "التدريب القيادي",
@@ -1019,7 +1019,7 @@ const ContactSection = ({ language, onScrollToSection }) => {
               </h3>
               <div className="relative h-90 rounded-xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.3926636536755!2d58.47841731498063!3d23.595857884681675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e91f7e1c5c5c5c5%3A0x5f5f5f5f5f5f5f5f!2sShatti%20Al%20Qurum%2C%20Muscat%2C%20Oman!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.8654976269086!2d58.405250099999996!3d23.573273699999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e91ff327b1f7805%3A0x3bd6e5d4ee9a798a!2sMall%20of%20Oman!5e0!3m2!1sen!2sin!4v1758016624722!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
